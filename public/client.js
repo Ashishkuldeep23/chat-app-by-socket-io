@@ -161,8 +161,24 @@ socket.on('message', (msgObj) => {
 
 
 // // screen scroll
-
-
 function scollToBottom() {
     messageArea.scrollTop = messageArea.scrollHeight
 }
+
+
+
+// // // Show menu and hide menu -------->
+
+
+function showMenu(){
+    document.querySelector(".main_menu").style.display = "block"
+}
+
+
+function hideMenu(){
+    document.querySelector(".main_menu").style.display = "none"
+
+}
+
+
+

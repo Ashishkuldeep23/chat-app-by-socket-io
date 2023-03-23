@@ -23,6 +23,7 @@ p{
 .main_div {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -33,11 +34,39 @@ p{
     border-radius: 1vh;
     height: 90vh;
 
-
     background-color: #ececec;
     background-image: url("https://www.transparenttextures.com/patterns/black-thread-light.png");
     /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+
 }
+
+
+.alter_msg{
+    color: red;
+    font-weight: bold;
+}
+
+
+.menu_div{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+
+.main_menu{
+    position: absolute;
+    top:0;
+    right: 0;
+    width: 45vh;
+    height: 80vh;
+
+    border: 1px solid red;
+    display: none;
+    overflow: auto;
+}
+
+
 
 .logo_div {
 

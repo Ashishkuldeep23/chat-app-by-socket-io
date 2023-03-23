@@ -23,6 +23,32 @@
 
         <main class="container main_div">
 
+            <p class="alter_msg">* Please wait for someone to be online or open this link into another tab and chat with yourself to test out this website.</p>
+
+            <div class="menu_div">
+
+                <button class="px-1 rounded-3 bg-warning" onclick="showMenu()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div class="bg-info rounded-3 animate__animated animate__fadeInRight main_menu">
+                    
+                    <div class="d-flex justify-content-between" onclick="hideMenu()">
+                        <h4 class="d-inline mx-auto text-white fw-bold py-1">Thank you</h4>
+                        <button class="px-2 fs-3 bg-danger text-white fw-bold">X</button>
+                    </div>
+
+                    <div class="mx-1">
+                        <!--Menu items here   -->
+                        
+                    </div>
+                    
+                    <h4 onclick="hideMenu()" class="bg-danger text-center">Close</h4>
+                </div>
+
+                
+            </div>
+
             <div class="inner_div">
 
                 <div class="logo_div">
@@ -53,6 +79,8 @@
                 </div>
 
             </div>
+
+            
 
 
 
