@@ -47,23 +47,25 @@ p{
 }
 
 
-.menu_div{
+.menu_btn{
     position: absolute;
     top: 5px;
     right: 5px;
 }
 
 
-.main_menu{
+
+#main_menu{
     position: absolute;
     top:0;
     right: 0;
     width: 45vh;
     height: 80vh;
-
     border: 1px solid red;
-    display: none;
     overflow: auto;
+
+    /* display: none ; */
+    /* visibility: hidden; */
 }
 
 
