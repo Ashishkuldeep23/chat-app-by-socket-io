@@ -34,7 +34,7 @@ io.on( "connection" , (socket)=>{
       online : countOfOnline
     }
 
-    socket.send(JSON.stringify(sendFirst))
+    socket.send(sendFirst)
 
     socket.on("message" , (msgObj)=>{
 

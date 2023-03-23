@@ -109,16 +109,16 @@ function appentMsg(msgObj, type) {
 // // Reciving msgs -------->
 socket.on('message', (msgObj) => {
 
-    let actualObj = JSON.parse(msgObj)
+    // let actualObj = JSON.parse(msgObj)
 
     // console.log(actualObj)
 
-    if (actualObj.online) {
+    if (Object.keys(msgObj).length === 1) {
 
         // console.log("ok")
         // console.log(actualObj)
 
-        document.querySelector(".online").innerHTML = `<h3 class="text-warning">${actualObj.online} Online</h3>`
+        document.querySelector(".online").innerHTML = `<h3 class="text-warning">${msgObj.online} Online</h3>`
 
 
 

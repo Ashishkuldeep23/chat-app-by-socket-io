@@ -61,10 +61,6 @@ body {
 }
 
 .msg {
-    /* border: 1px solid red; */
-
-
-
     margin: 5px 0;
 }
 
@@ -88,14 +84,14 @@ body {
 
 
 .in {
-    background-color: rgb(249, 218, 218);
+    background-color: rgb(254, 237, 237);
     width: 80%;
 }
 
 .out {
     margin-left: auto;
     width: 80%;
-    background-color: rgb(245, 245, 151);
+    background-color: rgb(255, 255, 213);
 
 }
 
