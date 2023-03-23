@@ -24,8 +24,17 @@ app.get("/" ,router)
 
 const io = require("socket.io")(server)
 
+let c = 0
+
 io.on( "connection" , (socket)=>{
     console.log("a user Connected")
+    c++
+
+    let sendFirst = {
+      online : c
+    }
+
+    socket.send(JSON.stringify(sendFirst))
 
     socket.on("message" , (msgObj)=>{
 
@@ -38,8 +47,9 @@ io.on( "connection" , (socket)=>{
 
 
     socket.on('disconnect', () => {
-        console.log('user disconnected');
-      });
+      c--
+      console.log('user disconnected');
+    });
 } )
 
 

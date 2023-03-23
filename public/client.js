@@ -6,7 +6,7 @@ let userName = prompt("Enter your name.(Default Guest)")
 
 let nameRegex = (/^[a-zA-Z]+([\s][a-zA-Z]+)*$/)
 
-if(!userName || !nameRegex.test(userName)){
+if (!userName || !nameRegex.test(userName)) {
     userName = "Guest"
 }
 
@@ -27,28 +27,28 @@ let messageArea = document.querySelector(".message_area")
 
 
 
-textArea.addEventListener( "keyup" , (e)=>{
+textArea.addEventListener("keyup", (e) => {
 
-    
-    if(e.key === "Enter" ){
+
+    if (e.key === "Enter") {
 
         submitMessage()
-        
+
     }
 
-} )
+})
 
 
 
 
-function submitMessage(){
+function submitMessage() {
     let value = textArea.value.trim()
-        
+
     // console.log(e.target.value)
-    if(value === '' ){
-       return alert("Write something in Message Box, please")
+    if (value === '') {
+        return alert("Write something in Message Box, please")
     }
-    else{
+    else {
         sendMessage(value)
     }
 }
@@ -59,22 +59,22 @@ function submitMessage(){
 
 
 
-function sendMessage(msg){
+function sendMessage(msg) {
 
-    let msgObj={
-        user : userName ,
-        id : new Date() ,
-        message : msg
+    let msgObj = {
+        user: userName,
+        id: new Date(),
+        message: msg
     }
 
 
-    appentMsg(msgObj , 'out')
-    textArea.value=""
+    appentMsg(msgObj, 'out')
+    textArea.value = ""
     scollToBottom()
 
     // // Sending to server ------>
 
-    socket.emit("message" , msgObj)
+    socket.emit("message", msgObj)
 
 
 }
@@ -83,13 +83,13 @@ function sendMessage(msg){
 
 
 
-function appentMsg( msgObj , type ){
+function appentMsg(msgObj, type) {
 
     let mainDiv = document.createElement("div")
 
     let className = type
 
-    mainDiv.classList.add(className , 'msg')
+    mainDiv.classList.add(className, 'msg')
 
     let markUp = `
     <h5>${msgObj.user}</h5>
@@ -107,11 +107,29 @@ function appentMsg( msgObj , type ){
 
 
 // // Reciving msgs -------->
-socket.on('message' , (msgObj)=>{
-    // console.log(msgObj)
+socket.on('message', (msgObj) => {
 
-    appentMsg(msgObj , "in" )
-    scollToBottom()
+    let actualObj = JSON.parse(msgObj)
+
+    // console.log(actualObj)
+
+    if (actualObj.online) {
+
+        // console.log("ok")
+        // console.log(actualObj)
+
+        document.querySelector(".online").innerHTML = `<h3 class="text-warning">${actualObj.online} Online</h3>`
+
+
+
+    } else {
+
+        appentMsg(msgObj, "in")
+        scollToBottom()
+
+
+    }
+
 })
 
 
@@ -120,6 +138,6 @@ socket.on('message' , (msgObj)=>{
 // // screen scroll
 
 
-function scollToBottom(){
+function scollToBottom() {
     messageArea.scrollTop = messageArea.scrollHeight
 }

@@ -36,6 +36,10 @@ body {
 }
 
 .logo_div {
+
+    display: flex;
+    justify-content: space-between;
+
     background: darkblue;
     color: white;
     border-top-right-radius: 1vh;
@@ -44,7 +48,7 @@ body {
     padding: 1vh;
 }
 
-.logo_div>img {
+.logo_div> div > img {
     height: 7vh;
     width: 7vh;
 }
