@@ -16,6 +16,10 @@ body {
 }
 
 
+p{
+    margin-bottom: 0px !important;
+}
+
 .main_div {
     min-height: 100vh;
     display: flex;
@@ -56,13 +60,13 @@ body {
 
 .message_area {
     overflow: auto;
-    padding: 2px;
+    padding: 10px;
     height: 80%;
 }
 
-.msg {
+/* .msg {
     margin: 5px 0;
-}
+} */
 
 
 .msg>h5 {
@@ -74,12 +78,14 @@ body {
     padding: 0 5px;
     margin: 0;
 
+    margin-top: 10px;
+
 }
 
 .msg>p {
     border: 1px solid rgb(52, 8, 8);
     border-top: 0;
-    padding: 3px 0;
+    padding: 0 !important;
 }
 
 
@@ -120,19 +126,19 @@ body {
     .inner_div {
         width: 98vw;
     }
+
+    .message_area{
+        padding: 2px;
+    }
 }
 
 
 @media (max-width: 270px) {
-
     .in {
         width: 93%;
-
     }
 
     .out {
         width: 93%;
-
     }
-
 }
