@@ -24,14 +24,14 @@ app.get("/" ,router)
 
 const io = require("socket.io")(server)
 
-let c = 0
+let countOfOnline = 0
 
 io.on( "connection" , (socket)=>{
     console.log("a user Connected")
-    c++
+    countOfOnline++
 
     let sendFirst = {
-      online : c
+      online : countOfOnline
     }
 
     socket.send(JSON.stringify(sendFirst))
@@ -47,7 +47,7 @@ io.on( "connection" , (socket)=>{
 
 
     socket.on('disconnect', () => {
-      c--
+      countOfOnline--
       console.log('user disconnected');
     });
 } )
