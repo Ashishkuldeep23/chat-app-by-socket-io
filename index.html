@@ -35,86 +35,81 @@
 
             <!-- Menu Icon -->
             <p>
-                <a class="px-1 rounded-3 bg-warning menu_btn " type="button" data-bs-toggle="collapse"
-                    href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <a class="px-1 rounded-3 bg-warning menu_btn " type="button" onclick="showOrHideMenu()">
                     <i class="fa-solid fa-bars"></i>
                 </a>
             </p>
 
+
+
             <!-- Menu div -->
-            <div class="collapse" id="collapseExample">
 
-                <div class="bg-info rounded-3 animate__animated animate__fadeInRight" id="main_menu"
-                    style="z-index: 1000;">
+            <div class="bg-info rounded-3 animate__animated animate__fadeInRight" id="menu">
 
-                    <div class="d-flex justify-content-between" data-bs-toggle="collapse" href="#collapseExample"
-                        role="button" aria-expanded="false" aria-controls="collapseExample">
-                        <h4 class="d-inline mx-auto text-white fw-bold py-1">Thank you</h4>
-                        <button class="px-2 fs-3 bg-danger text-white fw-bold rounded-3">X</button>
-                    </div>
-
-                    <div class="mx-1 text-center">
-
-                        <!--Menu items here   -->
-                        <!-- Menu content -->
-
-                        <h4>About this website.</h4>
-                        <ul class="text-start">
-                            <li>This is a simple website for <strong>chatting with all online members</strong>.</li>
-                            <li>This is a kind of <strong>group chatting website</strong>.</li>
-                            <li>This website is build using <strong>HTML CSS JS in frontEnd</strong> and <strong>NodeJs
-                                    in backEnd with Socket IO library</strong>.</li>
-                            <li>By using Socket Io library is able to get all messages <strong>without refreshing the
-                                    page</strong>.</li>
-                            <li>User can see <strong>how many membres are online</strong> currently (in top right header
-                                section)</li>
-                            <li>Anyone can chat with <strong>all online persons by anonymously</strong> or by telling
-                                his/her name.</li>
-                            <li>If you just want to test this website and no one is online currently then please open same link in <strong>different tab</strong> and chat with yourself to test out.</li>
-                            <li>Share with your friends</li>
-                            <li>Thank you for <strong>reading</strong>.</li>
-                        </ul>
-
-                        <h5>Made with ❤️ by <strong>ASHISH</strong></h5>
-                        <h6><strong>Contact</strong> links are:-</h6>
-                        <div style="margin-top: -10px;">
-
-                            <a href="https://www.linkedin.com/in/ashish-kuldeep-09b96018b" target="_blank"><img
-                                    src="https://cdn1.iconfinder.com/data/icons/social-media-rounded-corners/512/Rounded_Linkedin2_svg-512.png"
-                                    class="menu_logos" alt="Linkedin" />
-                            </a>
-
-                            <a href="https://github.com/Ashishkuldeep23" target="_blank"><img
-                                    src="https://cdn3.iconfinder.com/data/icons/social-media-2253/25/Group-512.png"
-                                    class="menu_logos" alt="Github" /></a>
-
-                            <a href="https://mobile.twitter.com/ashishkuldeep23" target="_blank"><img
-                                    src="https://cdn1.iconfinder.com/data/icons/social-media-rounded-corners/512/Rounded_Twitter5_svg-512.png"
-                                    class="menu_logos" alt="Tiwtter" /></a>
-
-                            <a href="https://www.youtube.com/@ashishkuldeep2305" target="_blank"><img
-                                    src="https://cdn1.iconfinder.com/data/icons/social-media-rounded-corners/512/Rounded_Youtube3_svg-512.png"
-                                    class="menu_logos" alt="Youtube" /></a>
-
-                        </div>
-
-
-                    </div>
-
-                    <h4 class="bg-danger text-center fw-bold text-white" data-bs-toggle="collapse"
-                        href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        Close</h4>
+                <div class="d-flex justify-content-between" onclick="showOrHideMenu()">
+                    <h4 class="d-inline mx-auto text-white fw-bold py-1">Thank you</h4>
+                    <button class="px-2 fs-3 bg-danger text-white fw-bold rounded-3">X</button>
                 </div>
 
+                <div class="mx-1 text-center">
+
+                    <!--Menu items here   -->
+                    <!-- Menu content -->
+
+                    <h4>About this website.</h4>
+                    <ul class="text-start">
+                        <li>This is a simple website for <strong>chatting with all online members</strong>.</li>
+                        <li>This is a kind of <strong>group chatting website</strong>.</li>
+                        <li>This website is build using <strong>HTML CSS JS in frontEnd</strong> and <strong>NodeJs
+                                in backEnd with Socket IO library</strong>.</li>
+                        <li>By using Socket Io library is able to get all messages <strong>without refreshing the
+                                page</strong>.</li>
+                        <li>User can see <strong>how many membres are online</strong> currently (in top right header
+                            section)</li>
+                        <li>Anyone can chat with <strong>all online persons by anonymously</strong> or by telling
+                            his/her name.</li>
+                        <li>If you just want to test this website and no one is online currently then please open same
+                            link in <strong>different tab</strong> and chat with yourself to test out.</li>
+                        <li>Share with your friends</li>
+                        <li>Thank you for <strong>reading</strong>.</li>
+                    </ul>
+
+                    <h5>Made with ❤️ by <strong>ASHISH</strong></h5>
+                    <h6><strong>Contact</strong> links are:-</h6>
+                    <div style="margin-top: -10px;">
+
+                        <a href="https://www.linkedin.com/in/ashish-kuldeep-09b96018b" target="_blank"><img
+                                src="https://cdn1.iconfinder.com/data/icons/social-media-rounded-corners/512/Rounded_Linkedin2_svg-512.png"
+                                class="menu_logos" alt="Linkedin" />
+                        </a>
+
+                        <a href="https://github.com/Ashishkuldeep23" target="_blank"><img
+                                src="https://cdn3.iconfinder.com/data/icons/social-media-2253/25/Group-512.png"
+                                class="menu_logos" alt="Github" /></a>
+
+                        <a href="https://mobile.twitter.com/ashishkuldeep23" target="_blank"><img
+                                src="https://cdn1.iconfinder.com/data/icons/social-media-rounded-corners/512/Rounded_Twitter5_svg-512.png"
+                                class="menu_logos" alt="Tiwtter" /></a>
+
+                        <a href="https://www.youtube.com/@ashishkuldeep2305" target="_blank"><img
+                                src="https://cdn1.iconfinder.com/data/icons/social-media-rounded-corners/512/Rounded_Youtube3_svg-512.png"
+                                class="menu_logos" alt="Youtube" /></a>
+
+                    </div>
+
+
+                </div>
+
+                <h4 class="bg-danger text-center fw-bold text-white" onclick="showOrHideMenu()">Close</h4>
             </div>
+
 
 
             <!-- MMain Ui div -->
             <div class="inner_div">
 
                 <div class="logo_div">
-                    <div class="d-flex" data-bs-toggle="collapse" href="#collapseExample" role="button"
-                        aria-expanded="false" aria-controls="collapseExample">
+                    <div class="d-flex" onclick="showOrHideMenu()">
                         <img src="https://cdn4.iconfinder.com/data/icons/socialcones/508/WeChat-512.png" alt="logo">
                         <h1 class="px-1">Chat Now</h1>
                     </div>

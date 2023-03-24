@@ -173,4 +173,23 @@ function scollToBottom() {
 
 
 
+// // // Show menu or hide ----->
+
+
+let showMenu = false 
+
+function showOrHideMenu(){
+
+    if(!showMenu){
+        document.getElementById("menu").style.visibility = "visible"
+        showMenu = !showMenu
+    }else{
+        document.getElementById("menug").style.visibility = "hidden"
+        showMenu = !showMenu
+    }
+
+}
+
+
+
 

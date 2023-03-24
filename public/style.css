@@ -57,17 +57,25 @@ p{
 
 
 
-#main_menu{
+#menu{
+    visibility: hidden;
+
     position: absolute;
     top:0;
     right: 0;
-    width: 45vh;
-    /* height: 80vh; */
-    border: 1px solid red;
+
+    /* width: 50vh; */
+
+    max-width: 60vh;
+
+    height: 85vh;
+    border: 2px solid red;
     overflow: auto;
 
-    /* display: none ; */
-    /* visibility: hidden; */
+
+    z-index: 1000;
+
+
 }
 
 
@@ -185,6 +193,8 @@ p{
     border-bottom-right-radius: 1vh;
 
 }
+
+
 
 
 
