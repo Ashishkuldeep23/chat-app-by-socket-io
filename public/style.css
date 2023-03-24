@@ -10,7 +10,7 @@
 body {
     font-family: 'Roboto', sans-serif;
 
-    background-color: #ffffff;
+    background-color: #dafaf6;
     background-image: url("https://www.transparenttextures.com/patterns/cartographer.png");
     /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
@@ -19,6 +19,8 @@ body {
 p{
     margin-bottom: 0px !important;
 }
+
+
 
 .main_div {
     min-height: 100vh;
@@ -34,7 +36,7 @@ p{
     border-radius: 1vh;
     height: 90vh;
 
-    background-color: #ececec;
+    background-color: #ffffff;
     background-image: url("https://www.transparenttextures.com/patterns/black-thread-light.png");
     /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 
@@ -60,13 +62,34 @@ p{
     top:0;
     right: 0;
     width: 45vh;
-    height: 80vh;
+    /* height: 80vh; */
     border: 1px solid red;
     overflow: auto;
 
     /* display: none ; */
     /* visibility: hidden; */
 }
+
+
+
+.menu_logos {
+    margin: 2vh;
+    height: 25px;
+    width: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    transition: ease-in-out  transform 0.15s;
+}
+
+.menu_logos:hover{
+    background-color: yellow;
+    transform: scale(1.4) rotate(180deg);
+}
+
+.menu_logos:active{
+    background-color: transparent;
+}
+
 
 
 
@@ -96,12 +119,14 @@ p{
 }
 
 /* .msg {
-    margin: 5px 0;
+    border-top-right-radius: 1.5vh;
+    border-top-left-radius: 1.5vh;
 } */
 
 
 .msg>h5 {
-    background-color: rgb(52, 8, 8);
+    /* background-color: rgb(52, 8, 8); */
+
     color: white;
     font-weight: bolder;
     border-top-right-radius: 1.5vh;
@@ -116,21 +141,31 @@ p{
 .msg>p {
     border: 1px solid rgb(52, 8, 8);
     border-top: 0;
-    padding: 0 !important;
+    padding: 0 5px !important;
+
 }
 
 
 .in {
-    background-color: rgb(254, 237, 237);
+    background-color: #adffed;
     width: 80%;
+}
+
+
+.in>h5{
+    background-color: #0a4437;
 }
 
 .out {
     margin-left: auto;
     width: 80%;
-    background-color: rgb(255, 255, 213);
-
+    background-color: #f8b2d3;
 }
+
+.out>h5{
+    background-color: #58092e ;
+}
+
 
 .text_area_div {
     display: flex;
