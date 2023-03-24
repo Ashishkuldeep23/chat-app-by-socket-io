@@ -184,7 +184,7 @@ function showOrHideMenu(){
         document.getElementById("menu").style.visibility = "visible"
         showMenu = !showMenu
     }else{
-        document.getElementById("menug").style.visibility = "hidden"
+        document.getElementById("menu").style.visibility = "hidden"
         showMenu = !showMenu
     }
 

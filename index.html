@@ -35,7 +35,7 @@
 
             <!-- Menu Icon -->
             <p>
-                <a class="px-1 rounded-3 bg-warning menu_btn " type="button" onclick="showOrHideMenu()">
+                <a class="px-2 rounded-3 bg-warning fs-3 menu_btn " type="button" onclick="showOrHideMenu()">
                     <i class="fa-solid fa-bars"></i>
                 </a>
             </p>
@@ -46,8 +46,8 @@
 
             <div class="bg-info rounded-3 animate__animated animate__fadeInRight" id="menu">
 
-                <div class="d-flex justify-content-between" onclick="showOrHideMenu()">
-                    <h4 class="d-inline mx-auto text-white fw-bold py-1">Thank you</h4>
+                <div class="d-flex justify-content-between" type="button" onclick="showOrHideMenu()">
+                    <h4 class="d-inline mx-auto text-white fw-bold py-1 border-bottom border-3">Thank you</h4>
                     <button class="px-2 fs-3 bg-danger text-white fw-bold rounded-3">X</button>
                 </div>
 
@@ -100,7 +100,7 @@
 
                 </div>
 
-                <h4 class="bg-danger text-center fw-bold text-white" onclick="showOrHideMenu()">Close</h4>
+                <h4 class="bg-danger text-center fw-bold text-white" type="button" onclick="showOrHideMenu()">Close</h4>
             </div>
 
 
@@ -109,7 +109,7 @@
             <div class="inner_div">
 
                 <div class="logo_div">
-                    <div class="d-flex" onclick="showOrHideMenu()">
+                    <div class="d-flex"  type="button" onclick="showOrHideMenu()">
                         <img src="https://cdn4.iconfinder.com/data/icons/socialcones/508/WeChat-512.png" alt="logo">
                         <h1 class="px-1">Chat Now</h1>
                     </div>
@@ -121,12 +121,9 @@
 
                 </div>
 
-                <div class="message_area">
-
-
-
-
-                </div>
+                
+                <!-- Here all msg div goin to append -->
+                <div class="message_area"></div>
 
                 <div class="text_area_div">
                     <textarea id="" placeholder="Write your message and hit Enter or press right buton."
