@@ -69,7 +69,7 @@ p{
     max-width: 60vh;
 
     height: 85vh;
-    border: 2px solid red;
+    /* border: 2px solid red;    */
     overflow: auto;
 
 
