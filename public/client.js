@@ -145,9 +145,14 @@ function appentMsg(msgObj, type) {
 socket.on('message', (msgObj) => {
 
 
+    // console.log(msgObj)
+
+
     if (Object.keys(msgObj).length === 1) {
         document.querySelector(".online").innerHTML = `<h3 class="text-warning">${msgObj.online} Online</h3>`
     } else {
+
+        document.querySelector(".online").innerHTML = `<h3 class="text-warning">${msgObj.online} Online</h3>`
 
         appentMsg(msgObj, "in")
         scollToBottom()

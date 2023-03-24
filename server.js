@@ -20,7 +20,23 @@ app.get("/" ,router)
 
 
 
+// // // Error handler middle ware for page not found ------>
+app.use((req, res)=>{
+  res.status(404).send(' <div> <img src="http://www.digitalmesh.com/blog/wp-content/uploads/2020/05/404-error.jpg" alt="page not found image" style="height:100vh; width:100vw;" /></div> ')
+})
 
+
+// // // // Server err handler code ------>
+// // // Not using now use in jwt code --->
+// app.use((err , req , res , next)=>{
+//   console.log(err.stack)
+//   res.status(500).send("Something broken on server please contect to owner.")
+// })
+
+
+
+
+/// // // Socket IO code --------->>
 
 const io = require("socket.io")(server)
 
@@ -34,12 +50,16 @@ io.on( "connection" , (socket)=>{
       online : countOfOnline
     }
 
+    // // // This will send first ------>
     socket.send(sendFirst)
 
     socket.on("message" , (msgObj)=>{
 
+      // // // now sending new obj with how many online included ----->
+      let sendObj = { online : countOfOnline , ...msgObj}
+
       // console.log(msgObj)
-      socket.broadcast.emit("message" , msgObj)
+      socket.broadcast.emit("message" , sendObj)
 
     })
 
