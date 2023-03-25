@@ -22,13 +22,16 @@ let messageArea = document.querySelector(".message_area")
 
 
 
+// // // This var is created for who sended the last msg --------->
+// // // acc. to this var showing name or only msg -->
+
 let who = null
 
 
 
 
 textArea.addEventListener("keyup", (e) => {
-
+    
     if (e.key === "Enter") {
         submitMessage()
 
