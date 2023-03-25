@@ -137,8 +137,8 @@ p{
 
     color: white;
     font-weight: bolder;
-    border-top-right-radius: 1.5vh;
-    border-top-left-radius: 1.5vh;
+    border-top-right-radius: 0.5vh;
+    border-top-left-radius: 0.5vh;
     padding: 0 5px;
     margin: 0;
 
@@ -167,7 +167,7 @@ p{
 .out {
     margin-left: auto;
     width: 80%;
-    background-color: #f8b2d3;
+    background-color: #ffd2e7;
 }
 
 .out>h5{
