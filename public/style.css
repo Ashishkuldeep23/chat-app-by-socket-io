@@ -10,16 +10,16 @@
 body {
     font-family: 'Roboto', sans-serif;
 
-    background-color: #dafaf6;
-    background-image: url("https://www.transparenttextures.com/patterns/cartographer.png");
+    background-color: #c9e3e1;
+
+    /* background-image: url("https://www.transparenttextures.com/patterns/cartographer.png"); */
     /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
 
-p{
+p {
     margin-bottom: 0px !important;
 }
-
 
 
 .main_div {
@@ -40,16 +40,18 @@ p{
     background-image: url("https://www.transparenttextures.com/patterns/black-thread-light.png");
     /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 
+    box-shadow: 15px 15px 15px gray;
+
 }
 
 
-.alter_msg{
+.alter_msg {
     color: red;
     font-weight: bold;
 }
 
 
-.menu_btn{
+.menu_btn {
     position: absolute;
     top: 5px;
     right: 5px;
@@ -57,22 +59,18 @@ p{
 
 
 
-#menu{
+#menu {
     visibility: hidden;
-
     position: absolute;
-    top:0;
+    top: 0;
     right: 0;
 
     /* width: 50vh; */
 
     max-width: 60vh;
-
     height: 85vh;
     /* border: 2px solid red;    */
     overflow: auto;
-
-
     z-index: 1000;
 
 
@@ -86,15 +84,15 @@ p{
     width: 30px;
     background-color: #fff;
     border-radius: 10px;
-    transition: ease-in-out  transform 0.15s;
+    transition: ease-in-out transform 0.15s;
 }
 
-.menu_logos:hover{
+.menu_logos:hover {
     background-color: yellow;
     transform: scale(1.4) rotate(180deg);
 }
 
-.menu_logos:active{
+.menu_logos:active {
     background-color: transparent;
 }
 
@@ -114,10 +112,25 @@ p{
     padding: 1vh;
 }
 
-.logo_div> div > img {
+.logo_div>div>img {
     height: 7vh;
     width: 7vh;
 }
+
+
+.web_name {
+    font-family: cursive;
+}
+
+
+.web_name > span{
+    position: relative;
+    bottom: 17px;
+    left: 9px;
+    font-size: 0.8rem;
+}
+
+
 
 
 .message_area {
@@ -139,11 +152,12 @@ p{
     font-weight: bolder;
     border-top-right-radius: 0.5vh;
     border-top-left-radius: 0.5vh;
-    padding: 0 5px;
+    padding: 3px 5px;
     margin: 0;
 
-    margin-top: 10px;
+    margin-top: 15px;
     overflow: auto;
+
 
 }
 
@@ -159,22 +173,26 @@ p{
 
 .in {
     background-color: #adffed;
-    width: 80%;
+    width: 70%;
+    box-shadow: -10px 10px 10px gray;
+
 }
 
 
-.in>h5{
+.in>h5 {
     background-color: #0a4437;
 }
 
 .out {
     margin-left: auto;
-    width: 80%;
+    width: 70%;
     background-color: #ffd2e7;
+    box-shadow: 10px 10px 10px gray;
+
 }
 
-.out>h5{
-    background-color: #58092e ;
+.out>h5 {
+    background-color: #58092e;
 }
 
 
@@ -188,6 +206,7 @@ p{
     resize: none;
     width: 85%;
     border-bottom-left-radius: 1vh;
+    padding: 0 5px;
 }
 
 .text_send {
@@ -202,22 +221,29 @@ p{
 
 
 @media (max-width: 480px) {
+    .alter_msg {
+        font-size: 0.8rem;
+    }
+
     .inner_div {
         width: 98vw;
     }
 
-    .message_area{
+    .message_area {
         padding: 2px;
     }
 }
 
 
 @media (max-width: 270px) {
+    .alter_msg {
+        font-size: 0.6rem;
+    }
     .in {
-        width: 93%;
+        width: 88%;
     }
 
     .out {
-        width: 93%;
+        width: 88%;
     }
 }

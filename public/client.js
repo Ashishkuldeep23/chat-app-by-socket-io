@@ -5,7 +5,6 @@ const socket = io();
 let userName = prompt("Enter your name.(Default Guest)")
 
 let nameRegex = (/^[a-zA-Z]+([\s][a-zA-Z]+)*$/)
-
 if (!userName || !nameRegex.test(userName)) {
     userName = "Guest"
 }
@@ -13,11 +12,12 @@ if (!userName || !nameRegex.test(userName)) {
 // console.log(userName)
 
 
-
+// // // Input div ------>
 let textArea = document.querySelector(".text_input")
 textArea.focus()
 
 
+// // // msg div ------>
 let messageArea = document.querySelector(".message_area")
 
 
@@ -34,7 +34,6 @@ textArea.addEventListener("keyup", (e) => {
     
     if (e.key === "Enter") {
         submitMessage()
-
     }
 })
 
@@ -65,7 +64,6 @@ function sendMessage(msg) {
 
     let msgObj = {
         user: userName,
-        id: new Date(),
         message: msg
     }
 
@@ -85,13 +83,13 @@ function sendMessage(msg) {
 
 function appentMsg(msgObj, type) {
 
-
     let mainDiv = document.createElement("div")
 
     // // // All classes ------->
     mainDiv.classList.add(type, 'msg', "animate__animated", "animate__flipInY")
 
 
+    // // // This var is used to set inner html -->
     let markUp;
 
 
@@ -138,25 +136,21 @@ function appentMsg(msgObj, type) {
 
     mainDiv.innerHTML = markUp
     messageArea.appendChild(mainDiv)
-
 }
 
 
 
 
-// // Reciving msgs -------->
+// // Reciving msgs (from server by brodcast function) -------->
 socket.on('message', (msgObj) => {
-
 
     // console.log(msgObj)
 
-
     if (Object.keys(msgObj).length === 1) {
-        document.querySelector(".online").innerHTML = `<h3 class="text-warning">${msgObj.online} Online</h3>`
+        document.querySelector("#online").innerHTML = `<h3 class="text-warning">${msgObj.online} Online</h3>`
     } else {
 
-        document.querySelector(".online").innerHTML = `<h3 class="text-warning">${msgObj.online} Online</h3>`
-
+        document.querySelector("#online").innerHTML = `<h3 class="text-warning">${msgObj.online} Online</h3>`
         appentMsg(msgObj, "in")
         scollToBottom()
         who = 1
@@ -168,7 +162,7 @@ socket.on('message', (msgObj) => {
 
 
 
-// // screen scroll
+// // screen scroll  ----------->
 function scollToBottom() {
     messageArea.scrollTop = messageArea.scrollHeight
 }
@@ -177,8 +171,6 @@ function scollToBottom() {
 
 
 // // // Show menu or hide ----->
-
-
 let showMenu = false 
 
 function showOrHideMenu(){
@@ -192,7 +184,3 @@ function showOrHideMenu(){
     }
 
 }
-
-
-
-

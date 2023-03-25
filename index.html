@@ -5,7 +5,7 @@
         <meta charset="!">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Chat Now (Chat with you friends)</title>
+        <title>Live Chat (Chat with you friends)</title>
 
         <meta name="description" content="This is a group chat website by shearing this link.">
 
@@ -50,7 +50,7 @@
 
 
                     <div class="d-flex justify-content-between" type="button" onclick="showOrHideMenu()">
-                        <h4 class="d-inline mx-auto text-white fw-bold py-1 border-bottom border-white border-3">Thank You</h4>
+                        <h4 class="d-inline mx-auto text-white fw-bold py-1 border-bottom border-white border-3 rounded-3">Thank You</h4>
                         <button class="px-2 fs-3 bg-danger text-white fw-bold rounded-3">X</button>
                     </div>
 
@@ -118,12 +118,16 @@
             <div class="inner_div">
 
                 <div class="logo_div">
-                    <div class="d-flex" type="button" onclick="showOrHideMenu()">
+                    <div class="d-flex" type="button" onclick="showOrHideMenu()" >
                         <img src="https://cdn4.iconfinder.com/data/icons/socialcones/508/WeChat-512.png" alt="logo">
-                        <h1 class="px-1">Chat Now</h1>
+                        <div class="web_name">
+
+                            <h2 class="px-1 fw-blod">Live Chat</h2>
+                            <span class="text-info">(Group Chatting)</span>
+                        </div>
                     </div>
 
-                    <div class="online">
+                    <div id="online">
                         <h3>Online</h3>
                     </div>
 
@@ -134,10 +138,11 @@
                 <div class="message_area"></div>
 
                 <div class="text_area_div">
-                    <textarea id="" placeholder="Say Hello to online person.Write your message and hit Enter or press right buton."
+                    <textarea placeholder="Say Hello to online person.Write your message and hit Enter or press right buton."
                         class="text_input"></textarea>
-                    <button class="text_send"><i class="fa-regular fa-paper-plane fa-shake fa-lg"
-                            onclick="submitMessage()"></i></button>
+                    <button class="text_send">
+                        <i class="fa-regular fa-paper-plane fa-shake fa-lg" onclick="submitMessage()"></i>
+                    </button>
                 </div>
 
             </div>
