@@ -237,10 +237,7 @@ li:hover{
     padding: 0 5px;
     background-color: #ebfefd;
     font-weight: bold;
-
     border-right: 0px;
-
-
 }
 
 
@@ -248,13 +245,10 @@ li:hover{
     background-color: #ebfefd;
     display: flex;
     align-items: center;
-    /* width: 20vh; */
-
     border: 1px solid darkblue;
-
     border-left: 0px;
-
 }
+
 
 .emoji i{
     font-size: 1.4rem;
@@ -263,7 +257,6 @@ li:hover{
 .emoji i:hover{
     cursor: pointer;
 }
-
 
 
 .text_send {
@@ -279,22 +272,13 @@ li:hover{
 @media (max-width:720px) {
 
     .emoji{
-        position: absolute;
-        z-index: 2000;
-
         bottom: 11vh;
-
-
-
         background-color: transparent;
-
-    
         border: 1px solid darkblue;
-    
         border: 0px;
-
-
-
+        position: absolute  ;
+        top: 88%;
+        z-index: 2000;
     }
     
 }
