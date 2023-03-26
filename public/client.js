@@ -3,7 +3,7 @@ const socket = io();
 // console.log(socket)
 
 let userName = prompt("Enter your name.(Default Guest)")
-
+userName = userName.trim()
 let nameRegex = (/^[a-zA-Z]+([\s][a-zA-Z]+)*$/)
 if (!userName || !nameRegex.test(userName)) {
     userName = "Guest"
