@@ -3,7 +3,19 @@ const socket = io();
 // console.log(socket)
 
 let userName = prompt("Enter your name.(Default Guest)")
-userName = userName.trim()
+
+
+
+if(userName){
+    userName = userName.trim()
+
+    // // // second if for (if input is just spaces) soto avoid error for that ----->
+    if(userName){
+        userName = userName[0].toLocaleUpperCase() + userName.substring(1)
+    }
+}
+
+
 let nameRegex = (/^[a-zA-Z]+([\s][a-zA-Z]+)*$/)
 if (!userName || !nameRegex.test(userName)) {
     userName = "Guest"
