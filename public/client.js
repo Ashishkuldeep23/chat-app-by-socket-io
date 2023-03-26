@@ -49,6 +49,14 @@ function submitMessage() {
         return alert("Write something in Message Box, please")
     }
     else {
+
+        // // // By below way we will get capitalization 
+        // // 1st -> uppercase of str[0] , oth index will in uppercase
+        // // 2nd -> substring() function give us part of main str from given index to end (if end index is not given , if end index is given that will not include.)
+
+        value = value[0].toUpperCase() + value.substring(1)
+
+        // // // caling actual sendmsg function with msg value.
         sendMessage(value)
         who = 0
     }
