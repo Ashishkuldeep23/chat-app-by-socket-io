@@ -95,10 +95,26 @@ function emojiClickHandler(input) {
             break;
     }
 
-
     textArea.value += clickedEmoji
-
 }
+
+
+// // // height to emoji div---------->
+
+let heightOfInputDiv = document.querySelector(".text_input").clientHeight
+
+console.log(heightOfInputDiv)
+
+
+
+document.querySelector(".emoji").style.bottom = `${heightOfInputDiv+5}px`
+
+
+
+
+
+
+
 
 
 

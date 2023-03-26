@@ -277,8 +277,12 @@ li:hover{
         border: 1px solid darkblue;
         border: 0px;
         position: absolute  ;
-        top: 88%;
-        z-index: 2000;
+        /* top: 88%; */
+
+        /* bottom: 41px; */
+
+        right: 10vh;
+        z-index: 500;
     }
     
 }
@@ -299,6 +303,11 @@ li:hover{
     .message_area {
         padding: 2px;
     }
+
+    .emoji{
+        right: 0;
+    }
+
 }
 
 
