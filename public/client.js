@@ -6,11 +6,11 @@ let userName = prompt("Enter your name.(Default Guest)")
 
 
 
-if(userName){
+if (userName) {
     userName = userName.trim()
 
     // // // second if for (if input is just spaces) soto avoid error for that ----->
-    if(userName){
+    if (userName) {
         userName = userName[0].toLocaleUpperCase() + userName.substring(1)
     }
 }
@@ -43,11 +43,62 @@ let who = null
 
 
 textArea.addEventListener("keyup", (e) => {
-    
+
     if (e.key === "Enter") {
         submitMessage()
     }
 })
+
+
+
+
+
+// // // Emoji click ---------->
+
+
+
+function emojiClickHandler(input) {
+
+    // console.log( typeof input)
+
+    let clickedEmoji;
+
+    switch (input) {
+        case "1":
+            clickedEmoji = "😊 "
+            break;
+
+        case "2":
+            clickedEmoji = "👍 "
+            break;
+
+        case "3":
+            clickedEmoji = "👌 "
+            break;
+
+        case "4":
+            clickedEmoji = "🎉 "
+            break;
+
+        case "5":
+            clickedEmoji = "❤️ "
+            break;
+        case "6":
+            clickedEmoji = "🤣 "
+            break;
+        case "7":
+            clickedEmoji = "🥲 "
+            break;
+
+        default:
+            clickedEmoji = "👍 "
+            break;
+    }
+
+
+    textArea.value += clickedEmoji
+
+}
 
 
 
@@ -144,7 +195,7 @@ function appentMsg(msgObj, type) {
             <h5>You (${msgObj.user})</h5>
             <p>${msgObj.message}</p>
             `
-        }else{
+        } else {
             markUp = `
             <h5>${msgObj.user}</h5>
             <p>${msgObj.message}</p>
@@ -191,14 +242,14 @@ function scollToBottom() {
 
 
 // // // Show menu or hide ----->
-let showMenu = false 
+let showMenu = false
 
-function showOrHideMenu(){
+function showOrHideMenu() {
 
-    if(!showMenu){
+    if (!showMenu) {
         document.getElementById("menu").style.visibility = "visible"
         showMenu = !showMenu
-    }else{
+    } else {
         document.getElementById("menu").style.visibility = "hidden"
         showMenu = !showMenu
     }
