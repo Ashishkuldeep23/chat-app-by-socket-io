@@ -271,18 +271,24 @@ li:hover{
 
 @media (max-width:720px) {
 
+    .main_div{
+        min-height: 105vh;
+    }
+
     .emoji{
         bottom: 11vh;
         background-color: transparent;
         border: 1px solid darkblue;
         border: 0px;
-        position: absolute  ;
         /* top: 88%; */
-
+        
         /* bottom: 41px; */
-
+        position: absolute  ;
+        
         right: 10vh;
         z-index: 500;
+
+
     }
     
 }

@@ -107,7 +107,7 @@ let heightOfInputDiv = document.querySelector(".text_input").clientHeight
 
 
 
-document.querySelector(".emoji").style.bottom = `${heightOfInputDiv}px`
+document.querySelector(".emoji").style.bottom = `${heightOfInputDiv-10}px`
 
 
 
