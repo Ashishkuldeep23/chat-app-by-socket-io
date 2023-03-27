@@ -265,6 +265,7 @@ li:hover{
 
 .emoji i:hover{
     cursor: pointer;
+    transform: scale(2);
 }
 
 
