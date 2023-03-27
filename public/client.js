@@ -47,6 +47,7 @@ textArea.addEventListener("keyup", (e) => {
 
     if (e.key === "Enter") {
         submitMessage()
+        return
     }
 })
 
@@ -101,6 +102,22 @@ function emojiClickHandler(input) {
     // // // scroll to last line (when clicked on emojies) --->
     textArea.scrollTop = textArea.scrollHeight
 }
+
+
+
+// // // Enter reading from body by id body works -------->
+let bodyDiv = document.getElementById("body")
+bodyDiv.addEventListener("keyup" , (e)=>{
+    if (e.key === "Enter") {
+        submitMessage()    // // // Calling send msg function 
+        return
+    }
+})
+
+
+
+
+
 
 
 // // // height to emoji div---------->
