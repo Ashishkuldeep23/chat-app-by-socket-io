@@ -286,7 +286,7 @@ li:hover{
 
 
     .message_area{
-        height: 74.5%;
+        height: 75%;
     }
 
 
@@ -298,6 +298,8 @@ li:hover{
 
         /* Over 1px border */
         margin: -1px 1px;
+        height: 5.5%;
+
     }
     
 }
