@@ -5,13 +5,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    
 }
 
 body {
     font-family: 'Roboto', sans-serif;
 
-    background-color: #f2f1f1;
-    background-image: url("https://www.transparenttextures.com/patterns/diagonal-striped-brick.png");
+    background-color: #ffffff;
+    background-image: url("https://www.transparenttextures.com/patterns/dark-mosaic.png");
     /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 
 }
@@ -49,6 +51,7 @@ li:hover{
 .alter_msg {
     color: red;
     font-weight: bold;
+    background-color: #e7e7e7;
 }
 
 
@@ -132,9 +135,10 @@ li:hover{
 
 .web_name > span{
     position: relative;
-    bottom: 17px;
-    left: 9px;
-    font-size: 0.8rem;
+    bottom: 19px;
+    left: 2px;
+    font-size: 0.85rem;
+  
 }
 
 

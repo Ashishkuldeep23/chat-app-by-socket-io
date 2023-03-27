@@ -26,6 +26,8 @@ if (!userName || !nameRegex.test(userName)) {
 
 // // // Input div ------>
 let textArea = document.querySelector(".text_input")
+
+// // // Writting mode active --->
 textArea.focus()
 
 
@@ -38,7 +40,6 @@ let messageArea = document.querySelector(".message_area")
 // // // acc. to this var showing name or only msg -->
 
 let who = null
-
 
 
 
@@ -96,6 +97,9 @@ function emojiClickHandler(input) {
     }
 
     textArea.value += clickedEmoji
+
+    // // // scroll to last line (when clicked on emojies) --->
+    textArea.scrollTop = textArea.scrollHeight
 }
 
 
