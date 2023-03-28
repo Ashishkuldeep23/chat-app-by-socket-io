@@ -124,6 +124,7 @@ li:hover {
 
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background: var(--theme);
     color: white;
     height: 10%;
@@ -153,6 +154,12 @@ li:hover {
     left: 2px;
     font-size: 0.85rem;
 
+}
+
+
+#online > h3{
+    padding: 0px !important;
+    padding:  auto 0 ;
 }
 
 
