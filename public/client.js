@@ -106,9 +106,13 @@ function emojiClickHandler(input) {
 
 
 // // // Enter reading from body by id body works -------->
+
 let bodyDiv = document.getElementById("body")
-bodyDiv.addEventListener("keyup" , (e)=>{
-    if (e.key === "Enter") {
+bodyDiv.addEventListener("keyup", (e) => {
+    let value = textArea.value.trim()
+    // console.log((value))
+
+    if (e.key === "Enter" && value != "") {
         submitMessage()    // // // Calling send msg function 
         return
     }
@@ -171,10 +175,25 @@ function submitMessage() {
 
 function sendMessage(msg) {
 
-    let msgObj = {
-        user: userName,
-        message: msg
+    let msgObj
+
+    // // // Here new if else added for sending read ---->
+
+    if (who !== 0) {
+        msgObj = {
+            id: new Date(),
+            user: userName,
+            message: msg
+        }
+    } else {
+        msgObj = {
+            user: userName,
+            message: msg
+        }
     }
+
+
+
 
 
     appentMsg(msgObj, 'out')
@@ -201,7 +220,6 @@ function appentMsg(msgObj, type) {
     // // // This var is used to set inner html -->
     let markUp;
 
-
     if (who === null) {
 
         if (type === "out") {
@@ -221,6 +239,14 @@ function appentMsg(msgObj, type) {
         markUp = `
         <p>${msgObj.message}</p>
         `
+    } else if ((msgObj.id !== undefined)) {
+        // // // Here new if else added , if something data is coming in id then show all data ---->
+
+        markUp = `
+        <h5>${msgObj.user}</h5>
+        <p>${msgObj.message}</p>
+        `
+
     } else if (who === 1 && type === "in") {
 
         markUp = `
@@ -228,18 +254,10 @@ function appentMsg(msgObj, type) {
         `
     } else {
 
-        if (type === "out") {
-            markUp = `
-            <h5>You (${msgObj.user})</h5>
-            <p>${msgObj.message}</p>
-            `
-        } else {
-            markUp = `
-            <h5>${msgObj.user}</h5>
-            <p>${msgObj.message}</p>
-            `
-        }
-
+        markUp = `
+        <h5>${msgObj.user}</h5>
+        <p>${msgObj.message}</p>
+        `
     }
 
 
