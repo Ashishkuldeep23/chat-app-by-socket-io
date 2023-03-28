@@ -241,11 +241,17 @@ function appentMsg(msgObj, type) {
         `
     } else if ((msgObj.id !== undefined)) {
         // // // Here new if else added , if something data is coming in id then show all data ---->
-
-        markUp = `
-        <h5>${msgObj.user}</h5>
-        <p>${msgObj.message}</p>
-        `
+        if (type === "out") {
+            markUp = `
+            <h5>You (${msgObj.user})</h5>
+            <p>${msgObj.message}</p>
+            `
+        } else {
+            markUp = `
+            <h5>${msgObj.user}</h5>
+            <p>${msgObj.message}</p>
+            `
+        }
 
     } else if (who === 1 && type === "in") {
 
