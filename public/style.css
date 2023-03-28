@@ -1,12 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 
+:root {
+    --theme: #521262;
+    --white: #ffffff;
+}
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
-
 }
 
 body {
@@ -38,10 +42,10 @@ li:hover {
 
 .inner_div {
     width: 80vw;
-    border: 2px solid darkblue;
+    border: 2px solid var(--theme);
     border-radius: 5vh;
     height: 90vh;
-    background-color: darkblue;
+    background-color: var(--theme);
 
     box-shadow: 15px 15px 15px gray;
 
@@ -53,6 +57,9 @@ li:hover {
     font-weight: bold;
     background-color: #e7e7e7;
     border-radius: 2vh;
+
+    border-bottom-right-radius: -10vh;
+
     padding: 0 5px;
 }
 
@@ -117,7 +124,7 @@ li:hover {
 
     display: flex;
     justify-content: space-between;
-    background: darkblue;
+    background: var(--theme);
     color: white;
     height: 10%;
     padding: 1vh 3vh;
@@ -135,6 +142,10 @@ li:hover {
     font-family: cursive;
 }
 
+
+.web_name>h2{
+    text-shadow: 2px 2px 5px cyan;
+}
 
 .web_name>span {
     position: relative;
@@ -163,6 +174,9 @@ li:hover {
     /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 
 }
+
+
+/* Below classes is used by js -------> */
 
 .msg {
     border-radius: 2px;
@@ -282,9 +296,47 @@ li:hover {
 
 @media (max-width:574px) {
 
+    .inner_div{
+        border-top-right-radius: 4vh ;
+        border-top-left-radius: 4vh ;
+        border-bottom-right-radius: 5vh ;
+        border-bottom-left-radius: 5vh ;
+    }
+
+    .alter_msg {
+        font-size: 0.7rem;
+    }
+
+    .logo_div{
+        height: 7%;
+        padding: 0.5vh 2vh;
+    }
+
+
+    .logo_div>div>img {
+
+        height: 4.5vh;
+        width: 4.5vh;
+    }
+
+    .web_name>h2{
+
+        font-size: 1.2rem;
+
+    }
+
+    .web_name>span{
+        font-size: 0.7rem;
+    }
+
+
+    #online>h3{
+        font-size: 1.2rem;
+    }
+
 
     .message_area {
-        height: 75%;
+        height: 78%;
     }
 
 
@@ -312,7 +364,7 @@ li:hover {
     }
 
     .logo_div {
-        padding: 1vh 2vh;
+        padding: 0.5vh 2vh;
     }
 
     .message_area {
