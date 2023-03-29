@@ -130,15 +130,7 @@ bodyDiv.addEventListener("keyup", (e) => {
 
 // console.log(heightOfInputDiv)
 // console.log(heightOfInputDiv-5)
-
-
-
 // document.querySelector(".emoji").style.bottom = `${heightOfInputDiv-10}px`
-
-
-
-
-
 
 
 
@@ -191,8 +183,6 @@ function sendMessage(msg) {
             message: msg
         }
     }
-
-
 
 
 
@@ -295,11 +285,41 @@ socket.on('message', (msgObj) => {
 
 
 
+// // // Sending user name to backend ---->
+
+// // // Below is first msg sended to backend with user name and date.
+// // // i'm emitted a function with connected name and now i can access that function name in backend and use this object..
+let userDetails = {
+    name : userName , time : new Date()
+}
+socket.emit("connected-new", userDetails)
+
+
+
+// // // reciving user name from backend (if someone joined) ---->
+socket.on("oneUser" , sendObj =>{
+    // console.log(name)
+
+    // // // Set name of user and show alert --->
+    document.getElementById("newUser").innerText = `😊${sendObj.name} connected`
+
+    // // // Set how many user is online ---->
+    document.querySelector("#online").innerHTML = `<h3 class="text-warning">${sendObj.online} Online</h3>`
+
+    setTimeout( ()=>{
+        document.getElementById("newUser").innerText = ""
+    } , 2500)
+
+})
+
+
+
+
+
 // // screen scroll  ----------->
 function scollToBottom() {
     messageArea.scrollTop = messageArea.scrollHeight
 }
-
 
 
 

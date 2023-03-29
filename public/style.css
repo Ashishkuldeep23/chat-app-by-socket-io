@@ -183,6 +183,15 @@ li:hover {
 }
 
 
+#newUser{
+    margin-top: -10px;
+    margin-bottom: 0px !important;
+    font-size: 1.1rem;
+}
+
+
+
+
 /* Below classes is used by js -------> */
 
 .msg {
@@ -376,6 +385,10 @@ li:hover {
 
     .message_area {
         padding: 2px;
+    }
+
+    #newUser{
+        margin-top: 0px;
     }
 
     .emoji {

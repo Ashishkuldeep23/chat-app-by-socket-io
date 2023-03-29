@@ -42,19 +42,44 @@ const io = require("socket.io")(server)
 
 let countOfOnline = 0
 
+let users = {}
+
 io.on("connection", (socket) => {
   console.log("a user Connected")
   countOfOnline++
 
-  let sendFirst = {
-    online: countOfOnline
-  }
 
+
+  // // // I will update name by given frontend--->
+
+
+  // // // By this way i can recive user name that he/she given on frontend --->
+  socket.on("connected-new" , (userDetails)=>{
+    // console.log(userDetails)
+
+    // userName.push(userDetails["name"])
+
+
+    users[socket.id] = userDetails.name;
+
+    socket.broadcast.emit("oneUser" , {name : userDetails.name , online : countOfOnline})
+
+    // console.log(users)
+
+  })
+
+
+
+
+  // console.log(userName)
+  let sendFirst = { online: countOfOnline }
   // // // This will send first ------>
   socket.send(sendFirst)
 
-  socket.on("message", (msgObj) => {
 
+
+
+  socket.on("message", (msgObj) => {
     // // // now sending new obj with how many online included ----->
     let sendObj = { online: countOfOnline, ...msgObj }
 
