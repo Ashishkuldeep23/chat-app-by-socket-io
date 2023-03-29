@@ -308,7 +308,7 @@ socket.on("oneUser" , sendObj =>{
 
     setTimeout( ()=>{
         document.getElementById("newUser").innerText = ""
-    } , 2500)
+    } , 3000)
 
 })
 
