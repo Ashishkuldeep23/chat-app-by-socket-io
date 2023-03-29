@@ -184,9 +184,21 @@ li:hover {
 
 
 #newUser{
-    margin-top: -10px;
+    margin-top: -8px;
     margin-bottom: 0px !important;
-    font-size: 1.1rem;
+
+    /* By this way i'can center div with position absolute --> by 3 line of code */
+    position:absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background-color: cyan;
+    color: rgb(184, 8, 8);
+    padding: 0 5px;
+    border-radius: 2vh;
+    z-index: 500;
+
+
 }
 
 
@@ -389,6 +401,8 @@ li:hover {
 
     #newUser{
         margin-top: 0px;
+        font-size: 1rem;
+        width: max-content;
     }
 
     .emoji {
