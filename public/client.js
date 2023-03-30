@@ -240,9 +240,9 @@ function sendMessage(msg) {
     // console.log(msgObj)
 
     if(msgObj.message === "😊" || msgObj.message === "👍" || msgObj.message === "👌" || msgObj.message === "🤣" || msgObj.message === "❤️" || msgObj.message === "🎉" || msgObj.message === "🥲" ){
-        
+
         // console.log("haha haha 😊😊😊😊")
-        appentMsg(msgObj, 'out' , "fs-1")
+        appentMsg(msgObj, 'out' , "3.5rem")
         textArea.value = ""
         scollToBottom()
     }else{
@@ -260,7 +260,7 @@ function sendMessage(msg) {
 
 
 
-function appentMsg(msgObj , type , classNmae = "") {
+function appentMsg(msgObj , type , fontSize = "") {
 
     let mainDiv = document.createElement("div")
 
@@ -276,44 +276,44 @@ function appentMsg(msgObj , type , classNmae = "") {
         if (type === "out") {
             markUp = `
             <h5>You (${msgObj.user})</h5>
-            <p class="${classNmae}">${msgObj.message}</p>
+            <p style="font-size:${fontSize};">${msgObj.message}</p>
             `
         } else {
             markUp = `
             <h5>${msgObj.user}</h5>
-            <p class="${classNmae}">${msgObj.message}</p>
+            <p style="font-size:${fontSize};">${msgObj.message}</p>
             `
         }
 
     } else if (who === 0 && type === "out") {
 
         markUp = `
-        <p class="${classNmae}">${msgObj.message}</p>
+        <p style="font-size:${fontSize};">${msgObj.message}</p>
         `
     } else if ((msgObj.id !== undefined)) {
         // // // Here new if else added , if something data is coming in id then show all data ---->
         if (type === "out") {
             markUp = `
             <h5>You (${msgObj.user})</h5>
-            <p class="${classNmae}">${msgObj.message}</p>
+            <p style="font-size:${fontSize};">${msgObj.message}</p>
             `
         } else {
             markUp = `
             <h5>${msgObj.user}</h5>
-            <p class="${classNmae}">${msgObj.message}</p>
+            <p style="font-size:${fontSize};">${msgObj.message}</p>
             `
         }
 
     } else if (who === 1 && type === "in") {
 
         markUp = `
-        <p class="${classNmae}">${msgObj.message}</p>
+        <p style="font-size:${fontSize};">${msgObj.message}</p>
         `
     } else {
 
         markUp = `
         <h5>${msgObj.user}</h5>
-        <p class="${classNmae}">${msgObj.message}</p>
+        <p style="font-size:${fontSize};">${msgObj.message}</p>
         `
     }
 
@@ -338,7 +338,7 @@ socket.on('message', (msgObj) => {
 
         if(msgObj.message === "😊" || msgObj.message === "👍" || msgObj.message === "👌" || msgObj.message === "🤣" || msgObj.message === "❤️" || msgObj.message === "🎉" || msgObj.message === "🥲"){ 
 
-            appentMsg(msgObj, "in" , "fs-1")
+            appentMsg(msgObj, "in" , "3.5rem")
             scollToBottom()
         }else{
             appentMsg(msgObj, "in")
