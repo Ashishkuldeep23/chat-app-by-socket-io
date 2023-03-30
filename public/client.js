@@ -237,21 +237,30 @@ function sendMessage(msg) {
     }
 
 
+    // console.log(msgObj)
 
-    appentMsg(msgObj, 'out')
-    textArea.value = ""
-    scollToBottom()
+    if(msgObj.message === "😊" || msgObj.message === "👍" || msgObj.message === "👌" || msgObj.message === "🤣" || msgObj.message === "❤️" || msgObj.message === "🎉" || msgObj.message === "🥲" ){
+        
+        // console.log("haha haha 😊😊😊😊")
+        appentMsg(msgObj, 'out' , "fs-1")
+        textArea.value = ""
+        scollToBottom()
+    }else{
+        appentMsg(msgObj, 'out')
+        textArea.value = ""
+        scollToBottom()
+    }
+
 
     // // Sending to server ------>
     socket.emit("message", msgObj)
-
 }
 
 
 
 
 
-function appentMsg(msgObj, type) {
+function appentMsg(msgObj , type , classNmae = "") {
 
     let mainDiv = document.createElement("div")
 
@@ -267,44 +276,44 @@ function appentMsg(msgObj, type) {
         if (type === "out") {
             markUp = `
             <h5>You (${msgObj.user})</h5>
-            <p>${msgObj.message}</p>
+            <p class="${classNmae}">${msgObj.message}</p>
             `
         } else {
             markUp = `
             <h5>${msgObj.user}</h5>
-            <p>${msgObj.message}</p>
+            <p class="${classNmae}">${msgObj.message}</p>
             `
         }
 
     } else if (who === 0 && type === "out") {
 
         markUp = `
-        <p>${msgObj.message}</p>
+        <p class="${classNmae}">${msgObj.message}</p>
         `
     } else if ((msgObj.id !== undefined)) {
         // // // Here new if else added , if something data is coming in id then show all data ---->
         if (type === "out") {
             markUp = `
             <h5>You (${msgObj.user})</h5>
-            <p>${msgObj.message}</p>
+            <p class="${classNmae}">${msgObj.message}</p>
             `
         } else {
             markUp = `
             <h5>${msgObj.user}</h5>
-            <p>${msgObj.message}</p>
+            <p class="${classNmae}">${msgObj.message}</p>
             `
         }
 
     } else if (who === 1 && type === "in") {
 
         markUp = `
-        <p>${msgObj.message}</p>
+        <p class="${classNmae}">${msgObj.message}</p>
         `
     } else {
 
         markUp = `
         <h5>${msgObj.user}</h5>
-        <p>${msgObj.message}</p>
+        <p class="${classNmae}">${msgObj.message}</p>
         `
     }
 
@@ -326,8 +335,16 @@ socket.on('message', (msgObj) => {
     } else {
 
         document.querySelector("#online").innerHTML = `<h3 class="text-warning">${msgObj.online} Online</h3>`
-        appentMsg(msgObj, "in")
-        scollToBottom()
+
+        if(msgObj.message === "😊" || msgObj.message === "👍" || msgObj.message === "👌" || msgObj.message === "🤣" || msgObj.message === "❤️" || msgObj.message === "🎉" || msgObj.message === "🥲"){ 
+
+            appentMsg(msgObj, "in" , "fs-1")
+            scollToBottom()
+        }else{
+            appentMsg(msgObj, "in")
+            scollToBottom()
+        }
+
         who = 1
         // console.log(who)
     }
