@@ -368,19 +368,18 @@ socket.on('message', (msgObj) => {
 // // // Below is first msg sended to backend with user name and date.
 // // // i'm emitted a function with connected name and now i can access that function name in backend and use this object..
 let userDetails = {
-    name: userName, time: new Date()
+    name: userName , time: new Date()
 }
 socket.emit("connected-new", userDetails)
 
 
 
 // // // reciving user name from backend (if someone joined) ---->
-socket.on("oneUser", sendObj => {
+socket.on("oneUserPlus", sendObj => {
     // console.log(name)
 
     // // // Set name of user and show alert --->
-    document.getElementById("newUser").innerText = `😊${sendObj.name} connected`
-
+    document.getElementById("newUser").innerText = `😊${sendObj.name} connected` 
     // // // Set how many user is online ---->
     document.querySelector("#online").innerHTML = `<h3 class="text-warning">${sendObj.online} Online</h3>`
 
@@ -389,6 +388,19 @@ socket.on("oneUser", sendObj => {
     }, 3000)
 
 })
+
+
+
+
+// // // If any user disconnected then update online count ---->
+
+socket.on("oneUserMinus" , (sendObj)=>{
+    
+   // // // Set how many user is online ---->
+   document.querySelector("#online").innerHTML = `<h3 class="text-warning">${sendObj.online} Online</h3>`
+})
+
+
 
 
 

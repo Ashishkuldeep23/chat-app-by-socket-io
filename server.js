@@ -62,7 +62,7 @@ io.on("connection", (socket) => {
 
     users[socket.id] = userDetails.name;
 
-    socket.broadcast.emit("oneUser" , {name : userDetails.name , online : countOfOnline})
+    socket.broadcast.emit("oneUserPlus" , {name : userDetails.name , online : countOfOnline})
 
     // console.log(users)
 
@@ -94,6 +94,9 @@ io.on("connection", (socket) => {
   socket.on('disconnect', () => {
     countOfOnline--
     console.log('user disconnected');
+
+    socket.broadcast.emit("oneUserMinus" , { online : countOfOnline})
+
   });
 })
 
