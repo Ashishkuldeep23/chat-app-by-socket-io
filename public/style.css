@@ -3,7 +3,7 @@
 
 :root {
     --theme: #163172;
-    --white: #ffffff;
+    --white: #ebfefd;
 }
 
 
@@ -55,7 +55,7 @@ li:hover {
 .alter_msg {
     color: red;
     font-weight: bold;
-    background-color: #e7e7e7;
+    background-color: var(--white);
     border-radius: 2vh;
 
     border-bottom-right-radius: -10vh;
@@ -175,7 +175,7 @@ li:hover {
     border: 1px solid;
 
 
-    background-color: #ebfefd;
+    background-color: var(--white) ;
     background-image: url("https://www.transparenttextures.com/patterns/black-thread-light.png");
 
     /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
@@ -284,7 +284,7 @@ li:hover {
     width: 80%;
     border-bottom-left-radius: 5vh;
     padding: 0 10px;
-    background-color: #ebfefd;
+    background-color: var(--white);
     font-weight: bold;
     border-right: 0px;
 }
@@ -292,7 +292,7 @@ li:hover {
 
 .emoji {
     z-index: 500;
-    background-color: #ebfefd;
+    background-color: var(--white);
     display: flex;
     align-items: center;
     justify-content: end;

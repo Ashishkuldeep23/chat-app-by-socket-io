@@ -2,10 +2,24 @@ const socket = io();
 
 // console.log(socket)
 
+
+// // Set dark mode (if previously done )----------->
+
+let getDrakMode = localStorage.getItem("darkmode")
+if (getDrakMode) {
+    let r = document.querySelector(':root');
+    // console.log(r)
+    r.style.setProperty('--white', '#212529');
+    r.style.setProperty('--theme', '#521262');
+    document.querySelector(".text_input").style.color = "white"
+    document.getElementsByTagName("BODY")[0].style.backgroundColor = "#212529";
+}
+
+
+
+
+
 let userName = prompt("Enter your name.(Default Guest)")
-
-
-
 if (userName) {
     userName = userName.trim()
 
@@ -124,6 +138,10 @@ bodyDiv.addEventListener("keyup", (e) => {
 
 
 
+
+
+
+
 // // // height to emoji div---------->
 
 // let heightOfInputDiv = document.querySelector(".text_input").clientHeight
@@ -131,7 +149,6 @@ bodyDiv.addEventListener("keyup", (e) => {
 // console.log(heightOfInputDiv)
 // console.log(heightOfInputDiv-5)
 // document.querySelector(".emoji").style.bottom = `${heightOfInputDiv-10}px`
-
 
 
 
@@ -146,6 +163,41 @@ function submitMessage() {
         return alert("Write something in Message Box, please")
     }
     else {
+
+
+        // // dark mode ------->
+        if (value === "#dark") {
+            // console.log("Dark Mode")
+            // alert("Dark Mode")
+
+            let r = document.querySelector(':root');
+            // console.log(r)
+            r.style.setProperty('--white', '#212529');
+            r.style.setProperty('--theme', '#521262');
+            document.querySelector(".text_input").style.color = "white"
+            document.getElementsByTagName("BODY")[0].style.backgroundColor = "#212529";
+
+            textArea.value = ""
+            localStorage.setItem("darkmode", "yes")
+            return
+        }
+
+        // // back to light mode ------->
+        if (value === "#normal") {
+            // console.log("Ligth Mode")
+            // alert("Ligth Mode")
+
+            let r = document.querySelector(':root');
+            // console.log(r)
+            r.style.setProperty('--white', '#ebfefd');
+            r.style.setProperty('--theme', '#163172');
+            document.querySelector(".text_input").style.color = "black"
+            document.getElementsByTagName("BODY")[0].style.backgroundColor = "#fff";
+
+            textArea.value = ""
+            localStorage.removeItem("darkmode")
+            return
+        }
 
         // // // By below way we will get capitalization 
         // // 1st -> uppercase of str[0] , oth index will in uppercase
@@ -290,14 +342,14 @@ socket.on('message', (msgObj) => {
 // // // Below is first msg sended to backend with user name and date.
 // // // i'm emitted a function with connected name and now i can access that function name in backend and use this object..
 let userDetails = {
-    name : userName , time : new Date()
+    name: userName, time: new Date()
 }
 socket.emit("connected-new", userDetails)
 
 
 
 // // // reciving user name from backend (if someone joined) ---->
-socket.on("oneUser" , sendObj =>{
+socket.on("oneUser", sendObj => {
     // console.log(name)
 
     // // // Set name of user and show alert --->
@@ -306,9 +358,9 @@ socket.on("oneUser" , sendObj =>{
     // // // Set how many user is online ---->
     document.querySelector("#online").innerHTML = `<h3 class="text-warning">${sendObj.online} Online</h3>`
 
-    setTimeout( ()=>{
+    setTimeout(() => {
         document.getElementById("newUser").innerText = ""
-    } , 3000)
+    }, 3000)
 
 })
 
