@@ -249,18 +249,20 @@ function sendMessage(msg) {
 
         // // Sending to server (frontEnd to BackEnd)------>
         socket.emit("message", msgObj)
+        return
     } else {
         appentMsg(msgObj, 'out')
         textArea.value = ""
         scollToBottom()
 
         // // // Sending to server (frontEnd to BackEnd)------>
-        // socket.emit("message", msgObj)
+        socket.emit("message", msgObj)
+        return
     }
 
 
     // // Sending to server (frontEnd to BackEnd)------>
-    socket.emit("message", msgObj)
+    // socket.emit("message", msgObj)
 }
 
 
