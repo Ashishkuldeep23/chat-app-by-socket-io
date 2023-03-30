@@ -240,20 +240,26 @@ function sendMessage(msg) {
 
     // console.log(msgObj)
 
-    if(msgObj.message === "😊" || msgObj.message === "👍" || msgObj.message === "👌" || msgObj.message === "🤣" || msgObj.message === "❤️" || msgObj.message === "🎉" || msgObj.message === "🥲" ){
+    if (msgObj.message === "😊" || msgObj.message === "👍" || msgObj.message === "👌" || msgObj.message === "🤣" || msgObj.message === "❤️" || msgObj.message === "🎉" || msgObj.message === "🥲") {
 
         // console.log("haha haha 😊😊😊😊")
-        appentMsg(msgObj, 'out' , "fs-1 animate__animated  animate__zoomInUp")
+        appentMsg(msgObj, 'out', "fs-1 animate__animated  animate__zoomInUp")
         textArea.value = ""
         scollToBottom()
-    }else{
+
+        // // Sending to server (frontEnd to BackEnd)------>
+        socket.emit("message", msgObj)
+    } else {
         appentMsg(msgObj, 'out')
         textArea.value = ""
         scollToBottom()
+
+        // // // Sending to server (frontEnd to BackEnd)------>
+        // socket.emit("message", msgObj)
     }
 
 
-    // // Sending to server ------>
+    // // Sending to server (frontEnd to BackEnd)------>
     socket.emit("message", msgObj)
 }
 
@@ -261,7 +267,7 @@ function sendMessage(msg) {
 
 
 
-function appentMsg(msgObj , type , className = "") {
+function appentMsg(msgObj, type, className = "") {
 
     let mainDiv = document.createElement("div")
 
@@ -337,11 +343,11 @@ socket.on('message', (msgObj) => {
 
         document.querySelector("#online").innerHTML = `<h3 class="text-warning">${msgObj.online} Online</h3>`
 
-        if(msgObj.message === "😊" || msgObj.message === "👍" || msgObj.message === "👌" || msgObj.message === "🤣" || msgObj.message === "❤️" || msgObj.message === "🎉" || msgObj.message === "🥲"){ 
+        if (msgObj.message === "😊" || msgObj.message === "👍" || msgObj.message === "👌" || msgObj.message === "🤣" || msgObj.message === "❤️" || msgObj.message === "🎉" || msgObj.message === "🥲") {
 
-            appentMsg(msgObj, "in" , "fs-1 fw-bold")
+            appentMsg(msgObj, "in", "fs-1 animate__animated  animate__zoomInUp")
             scollToBottom()
-        }else{
+        } else {
             appentMsg(msgObj, "in")
             scollToBottom()
         }
