@@ -44,6 +44,9 @@ let countOfOnline = 0
 
 let users = {}  // // Here i'm storing name of user But online in backend not storing anywhere like BD ------->
 
+// // // This var hold name of topic --->
+let newTopic = ""
+
 io.on("connection", (socket) => {
   console.log("a user Connected")
   countOfOnline++
@@ -65,20 +68,19 @@ io.on("connection", (socket) => {
     socket.broadcast.emit("oneUserPlus" , {name : userDetails.name , online : countOfOnline})
 
     // console.log(users)
-
   })
 
 
 
 
   // console.log(userName)
-  let sendFirst = { online: countOfOnline }
+  let sendFirst = { online: countOfOnline , topic : newTopic }
   // // // This will send first ------>
   socket.send(sendFirst)
 
 
 
-
+  // // // This is for send msg ----->
   socket.on("message", (msgObj) => {
     // // // now sending new obj with how many online included ----->
     let sendObj = { online: countOfOnline, ...msgObj }
@@ -89,8 +91,19 @@ io.on("connection", (socket) => {
   })
 
 
+  // // // This is for change topic ----->
+
+  socket.on( "topic_send"  , (topicObj)=>{
+    // console.log(topicObj.topic)
+    newTopic = topicObj.topic
+
+    socket.broadcast.emit("topic_recive" , { topic : newTopic})
+
+  })
 
 
+
+  // // // This is for dis connect user ----->
   socket.on('disconnect', () => {
     countOfOnline--
     console.log('user disconnected');

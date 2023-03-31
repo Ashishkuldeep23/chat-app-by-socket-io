@@ -185,22 +185,75 @@ li:hover {
 }
 
 
+
+#topic{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid darkred;
+    border-radius: 2vh;
+    padding: 0px 2px;
+    font-weight: bold;
+    background-color: darkred;
+    color: white; */
+
+    position: relative;
+
+}
+
+#topic > div{
+
+    display: flex;
+    justify-content: center;
+    /* align-items: center;  */
+
+    border: 1px solid darkred;
+    border-radius: 1.5vh;
+    padding: 0px 2px;
+    font-weight: bold;
+    background-color: darkred;
+    color: white;
+}
+
+
+#pencil {
+    /* visibility: hidden; */
+    display: none;
+    z-index: 100;
+    margin-top: 12px;
+    margin-left: 2px;
+
+}
+
+
+#topic:hover #pencil{
+    /* visibility: visible; */
+    display: block;
+}
+
+
+
+
 #newUser{
-    margin-top: -8px;
+    margin-top: -25px !important;
     margin-bottom: 0px !important;
 
     /* By this way i'can center div with position absolute --> by 3 line of code */
     position:absolute;
     left: 50%;
     transform: translateX(-50%);
+
     background-image: linear-gradient(90deg , cyan , yellow);
     color: rgb(184, 8, 8);
     padding: 0 5px;
     border-radius: 2vh;
     z-index: 500;
-
-
+    font-size: 1.3rem;
 }
+
+
+
 
 
 
@@ -401,8 +454,7 @@ li:hover {
     }
 
     #newUser{
-        margin-top: 0px;
-        font-size: 1rem;
+        font-size: 1.3rem;
         width: max-content;
     }
 

@@ -340,8 +340,13 @@ socket.on('message', (msgObj) => {
     // console.log(msgObj)
     // //  Below if and else is imp. becoz when user conncet then i'm sending a object from backend with count of online persons and tackel that object ------------->
 
-    if (Object.keys(msgObj).length === 1) {
+    if (Object.keys(msgObj).length === 2) {
+        // // // Increase online count --->
         document.querySelector("#online").innerHTML = `<h3 class="text-warning">${msgObj.online} Online</h3>`
+
+        // // // Set topic ----->
+        document.getElementById("topic_name").innerText = `Topic : ${msgObj.topic || "Null"}`
+
     } else {
 
         document.querySelector("#online").innerHTML = `<h3 class="text-warning">${msgObj.online} Online</h3>`
@@ -369,7 +374,7 @@ socket.on('message', (msgObj) => {
 // // // Below is first msg sended to backend with user name and date.
 // // // i'm emitted a function with connected name and now i can access that function name in backend and use this object..
 let userDetails = {
-    name: userName , time: new Date()
+    name: userName, time: new Date()
 }
 socket.emit("connected-new", userDetails)
 
@@ -380,7 +385,7 @@ socket.on("oneUserPlus", sendObj => {
     // console.log(name)
 
     // // // Set name of user and show alert --->
-    document.getElementById("newUser").innerText = `😊${sendObj.name} connected` 
+    document.getElementById("newUser").innerText = `😊${sendObj.name} connected`
     // // // Set how many user is online ---->
     document.querySelector("#online").innerHTML = `<h3 class="text-warning">${sendObj.online} Online</h3>`
 
@@ -395,10 +400,44 @@ socket.on("oneUserPlus", sendObj => {
 
 // // // If any user disconnected then update online count ---->
 
-socket.on("oneUserMinus" , (sendObj)=>{
-   // // // Set how many user is online ---->
-   document.querySelector("#online").innerHTML = `<h3 class="text-warning">${sendObj.online} Online</h3>`
+socket.on("oneUserMinus", (sendObj) => {
+    // // // Set how many user is online ---->
+    document.querySelector("#online").innerHTML = `<h3 class="text-warning">${sendObj.online} Online</h3>`
 })
+
+
+
+
+// // // Topic related code here ---------->
+
+// // // click handler for change topic ------>
+
+function changeTopic() {
+
+    let askTopic = prompt("Give a topic for discussion.\nTopic name should be short for better UI.\nOnly A to Z strings are valid.")
+    console.log(askTopic)
+
+    askTopic = askTopic.trim()
+
+    let nameRegex = (/^[a-zA-Z]+([\s][a-zA-Z]+)*$/)
+    if (!askTopic || !nameRegex.test(askTopic)) {
+        return alert("Not a vaild topic name.(Only a to z allowed)")
+    }
+    
+    askTopic = askTopic[0].toLocaleUpperCase() + askTopic.substring(1)
+
+    document.getElementById("topic_name").innerText = `Topic : ${askTopic}`
+
+    // // Send topic name to server ---->
+    socket.emit("topic_send", {topic : askTopic})
+}
+
+
+// // recive topic name to server ------->
+socket.on("topic_recive" , (topicObj)=>{
+    document.getElementById("topic_name").innerText = `Topic : ${topicObj.topic}`
+})
+
 
 
 
