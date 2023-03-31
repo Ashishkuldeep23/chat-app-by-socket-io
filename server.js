@@ -42,7 +42,7 @@ const io = require("socket.io")(server)
 
 let countOfOnline = 0
 
-let users = {}
+let users = {}  // // Here i'm storing name of user But online in backend not storing anywhere like BD ------->
 
 io.on("connection", (socket) => {
   console.log("a user Connected")

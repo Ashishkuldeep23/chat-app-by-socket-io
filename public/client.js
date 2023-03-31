@@ -338,6 +338,7 @@ function appentMsg(msgObj, type, className = "") {
 socket.on('message', (msgObj) => {
 
     // console.log(msgObj)
+    // //  Below if and else is imp. becoz when user conncet then i'm sending a object from backend with count of online persons and tackel that object ------------->
 
     if (Object.keys(msgObj).length === 1) {
         document.querySelector("#online").innerHTML = `<h3 class="text-warning">${msgObj.online} Online</h3>`
@@ -374,7 +375,7 @@ socket.emit("connected-new", userDetails)
 
 
 
-// // // reciving user name from backend (if someone joined) ---->
+// // // reciving user name from backend (if someone joined) and also increase online count ----->
 socket.on("oneUserPlus", sendObj => {
     // console.log(name)
 
@@ -395,7 +396,6 @@ socket.on("oneUserPlus", sendObj => {
 // // // If any user disconnected then update online count ---->
 
 socket.on("oneUserMinus" , (sendObj)=>{
-    
    // // // Set how many user is online ---->
    document.querySelector("#online").innerHTML = `<h3 class="text-warning">${sendObj.online} Online</h3>`
 })
