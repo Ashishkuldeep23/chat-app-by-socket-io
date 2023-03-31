@@ -243,7 +243,7 @@ function sendMessage(msg) {
     if (msgObj.message === "😊" || msgObj.message === "👍" || msgObj.message === "👌" || msgObj.message === "🤣" || msgObj.message === "❤️" || msgObj.message === "🎉" || msgObj.message === "🥲") {
 
         // console.log("haha haha 😊😊😊😊")
-        appentMsg(msgObj, 'out', "fs-1 animate__animated  animate__zoomInUp")
+        appentMsg(msgObj, 'out', "animate__animated  animate__zoomInUp" , "3rem")
         textArea.value = ""
         scollToBottom()
 
@@ -269,7 +269,7 @@ function sendMessage(msg) {
 
 
 
-function appentMsg(msgObj, type, className = "") {
+function appentMsg(msgObj, type, className = ""  , fontSize="") {
 
     let mainDiv = document.createElement("div")
 
@@ -285,44 +285,44 @@ function appentMsg(msgObj, type, className = "") {
         if (type === "out") {
             markUp = `
             <h5>You (${msgObj.user})</h5>
-            <p class="${className}">${msgObj.message}</p>
+            <p class="${className}" style="font-size:${fontSize};">${msgObj.message}</p>
             `
         } else {
             markUp = `
             <h5>${msgObj.user}</h5>
-            <p class="${className}">${msgObj.message}</p>
+            <p class="${className}" style="font-size:${fontSize};">${msgObj.message}</p>
             `
         }
 
     } else if (who === 0 && type === "out") {
 
         markUp = `
-        <p class="${className}">${msgObj.message}</p>
+        <p class="${className}" style="font-size:${fontSize};">${msgObj.message}</p>
         `
     } else if ((msgObj.id !== undefined)) {
         // // // Here new if else added , if something data is coming in id then show all data ---->
         if (type === "out") {
             markUp = `
             <h5>You (${msgObj.user})</h5>
-            <p class="${className}">${msgObj.message}</p>
+            <p class="${className}" style="font-size:${fontSize};">${msgObj.message}</p>
             `
         } else {
             markUp = `
             <h5>${msgObj.user}</h5>
-            <p class="${className}">${msgObj.message}</p>
+            <p class="${className}" style="font-size:${fontSize};">${msgObj.message}</p>
             `
         }
 
     } else if (who === 1 && type === "in") {
 
         markUp = `
-        <p class="${className}">${msgObj.message}</p>
+        <p class="${className}" style="font-size:${fontSize};">${msgObj.message}</p>
         `
     } else {
 
         markUp = `
         <h5>${msgObj.user}</h5>
-        <p class="${className}">${msgObj.message}</p>
+        <p class="${className}" style="font-size:${fontSize};">${msgObj.message}</p>
         `
     }
 
@@ -353,7 +353,7 @@ socket.on('message', (msgObj) => {
 
         if (msgObj.message === "😊" || msgObj.message === "👍" || msgObj.message === "👌" || msgObj.message === "🤣" || msgObj.message === "❤️" || msgObj.message === "🎉" || msgObj.message === "🥲") {
 
-            appentMsg(msgObj, "in", "fs-1 animate__animated  animate__zoomInUp")
+            appentMsg(msgObj, "in", "animate__animated  animate__zoomInUp" , "3rem")
             scollToBottom()
         } else {
             appentMsg(msgObj, "in")
