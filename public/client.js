@@ -415,7 +415,7 @@ socket.on("oneUserMinus", (sendObj) => {
 function changeTopic() {
 
     let askTopic = prompt("Give a topic for discussion.\nTopic name should be short for better UI.\nOnly A to Z strings are valid.")
-    console.log(askTopic)
+    // console.log(askTopic)
 
     askTopic = askTopic.trim()
 
@@ -436,6 +436,7 @@ function changeTopic() {
 // // recive topic name to server ------->
 socket.on("topic_recive" , (topicObj)=>{
     document.getElementById("topic_name").innerText = `Topic : ${topicObj.topic}`
+    alert(`Topic is Changed to ${topicObj.topic}`)
 })
 
 
