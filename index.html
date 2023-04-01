@@ -146,18 +146,22 @@
 
                 <!-- Here all msg div goin to append -->
                 <div class="message_area">
+                    <!-- Below div is used in topic (position normal so it will show firt) -->
                     <div id="topic">
                         <div>
-                            <p  id="topic_name">Topic : Null</p>
+                            <p  id="topic_name">Topic : Set Topic</p>
                             <i class="fa-solid fa-square-pen fa-bounce fa-xl bg-white text-danger" type="button" id="pencil" onclick="changeTopic()"></i>
                         </div>
                     </div>
+                    <!-- Below div is used in show the name of recent joined person (Position absolute so it will show top of all ) -->
                     <h4 class="fw-blod" id="newUser"></h4>
+
+                    <!-- Below all messages get append by javascript  -->
+
                 </div>
 
 
-                <!-- 574 break point  -->
-
+                <!-- at 574px size this visible  -->
                 <div class=" d-sm-none emoji">
                     <i class="fa-brands fa-bounce" onclick="emojiClickHandler('1')">😊</i>
                     <i class="fa-brands fa-flip" onclick="emojiClickHandler('2')">👍</i>

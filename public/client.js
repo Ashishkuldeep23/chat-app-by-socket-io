@@ -345,7 +345,7 @@ socket.on('message', (msgObj) => {
         document.querySelector("#online").innerHTML = `<h3 class="text-warning">${msgObj.online} Online</h3>`
 
         // // // Set topic ----->
-        document.getElementById("topic_name").innerText = `Topic : ${msgObj.topic || "Null"}`
+        document.getElementById("topic_name").innerText = `Topic : ${msgObj.topic || "Set Topic"}`
 
     } else {
 
