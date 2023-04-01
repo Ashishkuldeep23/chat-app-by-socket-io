@@ -414,7 +414,7 @@ socket.on("oneUserMinus", (sendObj) => {
 
 function changeTopic() {
 
-    let askTopic = prompt("Give a topic for discussion.\nTopic name should be short for better UI.\nOnly A to Z strings are valid.")
+    let askTopic = prompt("Give a topic for discussion.\nTopic name should be short for better UI (In one or two words).\nOnly A to Z strings are valid.")
     // console.log(askTopic)
 
     askTopic = askTopic.trim()
