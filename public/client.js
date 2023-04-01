@@ -240,6 +240,10 @@ function sendMessage(msg) {
 
     // console.log(msgObj)
 
+    // // // Send sound (new instance of audio objcet) ---->
+    let sendAudio = new Audio("./sounds/send.mp3")
+
+
     if (msgObj.message === "😊" || msgObj.message === "👍" || msgObj.message === "👌" || msgObj.message === "🤣" || msgObj.message === "❤️" || msgObj.message === "🎉" || msgObj.message === "🥲") {
 
         // console.log("haha haha 😊😊😊😊")
@@ -249,6 +253,8 @@ function sendMessage(msg) {
 
         // // Sending to server (frontEnd to BackEnd)------>
         socket.emit("message", msgObj)
+
+        sendAudio.play()    // // // Playing the send sound.
         return
     } else {
         appentMsg(msgObj, 'out')
@@ -257,6 +263,8 @@ function sendMessage(msg) {
 
         // // // Sending to server (frontEnd to BackEnd)------>
         socket.emit("message", msgObj)
+
+        sendAudio.play()    // // // Playing the send sound.
         return
     }
 
@@ -350,15 +358,24 @@ socket.on('message', (msgObj) => {
 
     } else {
 
+        // // // set online count --->
         document.querySelector("#online").innerHTML = `<h3 class="text-warning">${msgObj.online} Online</h3>`
+
+        // // // Recive sound (new instance of audio objcet) ---->c
+        let reciveAudio = new Audio("./sounds/recive.mp3")
 
         if (msgObj.message === "😊" || msgObj.message === "👍" || msgObj.message === "👌" || msgObj.message === "🤣" || msgObj.message === "❤️" || msgObj.message === "🎉" || msgObj.message === "🥲") {
 
             appentMsg(msgObj, "in", "animate__animated  animate__zoomInUp" , "3rem")
             scollToBottom()
+
+            reciveAudio.play()   // // Recive sound playing --> 
+
         } else {
             appentMsg(msgObj, "in")
             scollToBottom()
+
+            reciveAudio.play()     // // Recive sound playing --> 
         }
 
         who = 1
@@ -450,10 +467,8 @@ socket.on("topic_recive" , (topicObj)=>{
 // // // Send typing name ------>
 
 textArea.addEventListener( 'keyup' , ()=>{
-
     let length = textArea.value.length
     socket.emit("typing_send", {user : userName , len : length})
-
 } )
 
 
@@ -463,15 +478,23 @@ textArea.addEventListener( 'keyup' , ()=>{
 socket.on( "typing_recive" , (typingObj)=>{
     // console.log(typingObj)
 
+
+    // // // Typing sound (new instance of audio objcet) ---->
+
+    let typingAudio = new Audio('./sounds/typing.mp3')
+
+
     // document.getElementById("typing").style.visibility = "visibility"
     document.getElementById("typing").innerText = `${typingObj.user} is typing...`
+
+    typingAudio.play()
+
 
     setTimeout( ()=>{
 
         document.getElementById("typing").innerText = ""
-
         // document.getElementById("typing").style.visibility = "hidden"
-    } , 1500)
+    } , 1000)
 
 
 } )
