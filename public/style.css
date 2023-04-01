@@ -327,7 +327,7 @@ li:hover {
 }
 
 
-/* All js used classes ends */
+/* All js used classes ends ----------- */
 
 #typing{
     background-color: var(--white);
@@ -335,14 +335,14 @@ li:hover {
 
     position: absolute;
     margin-left: 2px;
-    bottom: 15vh;
     font-size: 0.8rem;
     border-radius: 2vh;
     font-weight: 600;
     background-image: linear-gradient( 150deg ,yellow , transparent , transparent , cyan , transparent , transparent , yellow );
-
+    
     /* visibility: hidden; */
     
+    margin-top: -3.5vh;
 }
 
 
@@ -441,6 +441,12 @@ li:hover {
 
     .message_area {
         height: 78%;
+    }
+
+
+    #typing{
+        margin-top: 0;
+        z-index: 700;
     }
 
 
