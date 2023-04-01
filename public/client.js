@@ -276,6 +276,7 @@ function appentMsg(msgObj, type, className = ""  , fontSize="") {
     // // // All classes ------->
     mainDiv.classList.add(type, 'msg', "animate__animated", "animate__flipInY")
 
+    mainDiv.style.width = "fit-content"
 
     // // // This var is used to set inner html -->
     let markUp;
@@ -408,6 +409,8 @@ socket.on("oneUserMinus", (sendObj) => {
 
 
 
+
+
 // // // Topic related code here ---------->
 
 // // // click handler for change topic ------>
@@ -440,6 +443,38 @@ socket.on("topic_recive" , (topicObj)=>{
 })
 
 
+
+
+// // // User Typing ------->
+
+// // // Send typing name ------>
+
+textArea.addEventListener( 'keyup' , ()=>{
+
+    let length = textArea.value.length
+    socket.emit("typing_send", {user : userName , len : length})
+
+} )
+
+
+
+// // // Recive typing ------>
+
+socket.on( "typing_recive" , (typingObj)=>{
+    // console.log(typingObj)
+
+    // document.getElementById("typing").style.visibility = "visibility"
+    document.getElementById("typing").innerText = `${typingObj.user} is typing...`
+
+    setTimeout( ()=>{
+
+        document.getElementById("typing").innerText = ""
+
+        // document.getElementById("typing").style.visibility = "hidden"
+    } , 1500)
+
+
+} )
 
 
 

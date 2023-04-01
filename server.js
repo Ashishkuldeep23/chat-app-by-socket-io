@@ -47,6 +47,10 @@ let users = {}  // // Here i'm storing name of user But online in backend not st
 // // // This var hold name of topic --->
 let newTopic = ""
 
+// // // Below var hold the name of typer --->
+let typing = ""
+
+
 io.on("connection", (socket) => {
   console.log("a user Connected")
   countOfOnline++
@@ -101,6 +105,21 @@ io.on("connection", (socket) => {
 
   })
 
+
+  // // // This is for typing ----->
+
+  socket.on( "typing_send" , (typingObj)=>{
+
+    // console.log(typingObj)
+
+    typing = typingObj.user
+
+    if(typingObj.len >= 1){
+
+      socket.broadcast.emit("typing_recive" , {user : typing , len : typingObj.len})
+    }
+
+  })
 
 
   // // // This is for dis connect user ----->
