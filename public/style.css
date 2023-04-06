@@ -365,6 +365,12 @@ li:hover {
 }
 
 
+
+.text_input:focus{
+    outline: none;
+}
+
+
 .emoji {
     z-index: 500;
     background-color: var(--white);
