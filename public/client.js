@@ -17,7 +17,7 @@ if (getDrakMode) {
 
 
 
-
+// // // Ask name of user ---->
 
 let userName = prompt("Enter your name.(Default Guest)")
 if (userName) {
@@ -69,10 +69,8 @@ textArea.addEventListener("keyup", (e) => {
 
 
 
+
 // // // Emoji click ---------->
-
-
-
 function emojiClickHandler(input) {
 
     // console.log( typeof input)
@@ -113,6 +111,10 @@ function emojiClickHandler(input) {
 
     textArea.value += clickedEmoji
 
+    // // // Now send msg with emoji on click ---------> 
+
+    submitMessage()
+
     // // // scroll to last line (when clicked on emojies) --->
     textArea.scrollTop = textArea.scrollHeight
 }
@@ -136,12 +138,6 @@ bodyDiv.addEventListener("keyup", (e) => {
 
 
 
-
-
-
-
-
-
 // // // height to emoji div---------->
 
 // let heightOfInputDiv = document.querySelector(".text_input").clientHeight
@@ -149,7 +145,6 @@ bodyDiv.addEventListener("keyup", (e) => {
 // console.log(heightOfInputDiv)
 // console.log(heightOfInputDiv-5)
 // document.querySelector(".emoji").style.bottom = `${heightOfInputDiv-10}px`
-
 
 
 
@@ -166,6 +161,7 @@ function submitMessage() {
     else {
 
 
+        // // // Setting dark and light mode by textarea ----->
         // // dark mode ------->
         if (value === "#dark") {
             // console.log("Dark Mode")
@@ -214,9 +210,7 @@ function submitMessage() {
 
 
 
-
-
-
+// // // Sending msgs --->
 
 function sendMessage(msg) {
 
@@ -247,7 +241,7 @@ function sendMessage(msg) {
     if (msgObj.message === "😊" || msgObj.message === "👍" || msgObj.message === "👌" || msgObj.message === "🤣" || msgObj.message === "❤️" || msgObj.message === "🎉" || msgObj.message === "🥲") {
 
         // console.log("haha haha 😊😊😊😊")
-        appentMsg(msgObj, 'out', "animate__animated  animate__zoomInUp" , "3rem")
+        appentMsg(msgObj, 'out', "animate__animated  animate__zoomInUp", "3rem")
         textArea.value = ""
         scollToBottom()
 
@@ -275,9 +269,69 @@ function sendMessage(msg) {
 
 
 
+// // // // Camara icon click handler ------->
+
+// // Upload file --->
+function uploadFiles(e) {
+
+    // let inputTag = document.getElementById("fileInput")
+    // console.log(inputTag)
+
+    // console.log(e)
+
+    let inputFileIs = e.target.files[0]
+    // console.log(inputFileIs)
 
 
-function appentMsg(msgObj, type, className = ""  , fontSize="") {
+    // // // Append sended msg --->
+    let blod = new Blob([inputFileIs], { type: inputFileIs.type })
+
+    let reader = new FileReader();
+    reader.readAsDataURL(blod)
+
+    reader.onloadend = () => {
+        // appentMsg({ src: reader.result, user: msgObj.userName }, "in", "animate__animated  animate__zoomInUp", "3rem", true)
+        appentMsg({ src: reader.result, user: userName }, "out", "animate__animated  animate__zoomInUp", "3rem", true)
+        scollToBottom()
+
+    }
+
+    // // // Don't give image directly convert it into reader file.
+    // appentMsg({ src: inputFileIs, user: userName }, "out", "animate__animated  animate__zoomInUp", "3rem", true)
+
+
+    // // // Actual send fn
+    sendFileToServer(inputFileIs)
+}
+
+
+// // Send file --->
+function sendFileToServer(file) {
+
+    console.log("File sended ...");
+
+
+    let msgObject = {
+        userName: userName,
+        type: "file",
+        body: file,
+        mimeType: file.mimeType,
+        filename: file.name
+    }
+
+    // console.log(file.mimeType , file.name )
+
+    socket.emit("upload", msgObject, (status) => {
+        console.log(status);
+    });
+
+}
+
+
+
+// appentMsg(msgObj, "in", "animate__animated  animate__zoomInUp", "3rem")
+
+function appentMsg(msgObj, type, className = "img_style_file animate__animated  animate__zoomInUp ", fontSize = "3rem", fileType = false) {
 
     let mainDiv = document.createElement("div")
 
@@ -289,7 +343,33 @@ function appentMsg(msgObj, type, className = ""  , fontSize="") {
     // // // This var is used to set inner html -->
     let markUp;
 
-    if (who === null) {
+
+    if (fileType) {
+
+        if (type === "out") {
+            // console.log("out")
+
+            markUp = `
+            <h5>You (${msgObj.user})</h5>
+            <img class="${className} img_style_file" src="${msgObj.src}" alt="">
+            `
+
+        } else {
+            // console.log("In")
+
+            markUp = `
+            <h5>${msgObj.user}</h5>
+            <img class="${className} img_style_file" src="${msgObj.src}" alt="">
+            `
+        }
+
+
+    }
+
+
+    // // // Other then file
+
+    else if (who === null) {
 
         if (type === "out") {
             markUp = `
@@ -338,6 +418,8 @@ function appentMsg(msgObj, type, className = ""  , fontSize="") {
 
     mainDiv.innerHTML = markUp
     messageArea.appendChild(mainDiv)
+
+    scollToBottom()
 }
 
 
@@ -366,7 +448,7 @@ socket.on('message', (msgObj) => {
 
         if (msgObj.message === "😊" || msgObj.message === "👍" || msgObj.message === "👌" || msgObj.message === "🤣" || msgObj.message === "❤️" || msgObj.message === "🎉" || msgObj.message === "🥲") {
 
-            appentMsg(msgObj, "in", "animate__animated  animate__zoomInUp" , "3rem")
+            appentMsg(msgObj, "in", "animate__animated  animate__zoomInUp", "3rem")
             scollToBottom()
 
             reciveAudio.play()   // // Recive sound playing --> 
@@ -383,6 +465,7 @@ socket.on('message', (msgObj) => {
     }
 
 })
+
 
 
 
@@ -443,39 +526,37 @@ function changeTopic() {
     if (!askTopic || !nameRegex.test(askTopic)) {
         return alert("Not a vaild topic name.(Only a to z allowed)")
     }
-    
+
     askTopic = askTopic[0].toLocaleUpperCase() + askTopic.substring(1)
 
     document.getElementById("topic_name").innerText = `Topic : ${askTopic}`
 
     // // Send topic name to server ---->
-    socket.emit("topic_send", {topic : askTopic})
+    socket.emit("topic_send", { topic: askTopic })
 }
 
 
 // // recive topic name to server ------->
-socket.on("topic_recive" , (topicObj)=>{
+socket.on("topic_recive", (topicObj) => {
     document.getElementById("topic_name").innerText = `Topic : ${topicObj.topic}`
     alert(`Topic is Changed to ${topicObj.topic}`)
 })
 
 
 
-
 // // // User Typing ------->
 
 // // // Send typing name ------>
-
-textArea.addEventListener( 'keyup' , ()=>{
+textArea.addEventListener('keyup', () => {
     let length = textArea.value.length
-    socket.emit("typing_send", {user : userName , len : length})
-} )
+    socket.emit("typing_send", { user: userName, len: length })
+})
 
 
 
 // // // Recive typing ------>
 
-socket.on( "typing_recive" , (typingObj)=>{
+socket.on("typing_recive", (typingObj) => {
     // console.log(typingObj)
 
 
@@ -490,14 +571,36 @@ socket.on( "typing_recive" , (typingObj)=>{
     typingAudio.play()
 
 
-    setTimeout( ()=>{
+    setTimeout(() => {
 
         document.getElementById("typing").innerText = ""
         // document.getElementById("typing").style.visibility = "hidden"
-    } , 1000)
+    }, 1000)
 
 
-} )
+})
+
+
+
+// // // File recived or not reciving file --->
+// // Recived img msg --->
+
+socket.on("file_show_to_users", (msgObj) => {
+
+    // console.log(msgObj)
+
+    let blod = new Blob([msgObj.body], { type: msgObj.type })
+
+    let reader = new FileReader();
+    reader.readAsDataURL(blod)
+
+    reader.onloadend = () => {
+        appentMsg({ src: reader.result, user: msgObj.userName }, "in", "animate__animated  animate__zoomInUp", "3rem", true)
+        scollToBottom()
+    }
+
+})
+
 
 
 

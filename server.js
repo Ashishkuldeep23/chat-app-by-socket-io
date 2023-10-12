@@ -34,6 +34,11 @@ app.use((req, res) => {
 // })
 
 
+// // // For send file code //
+
+const path = require('path');
+const fs = require('fs');
+
 
 
 /// // // Socket IO code --------->>
@@ -61,7 +66,7 @@ io.on("connection", (socket) => {
 
 
   // // // By this way i can recive user name that he/she given on frontend --->
-  socket.on("connected-new" , (userDetails)=>{
+  socket.on("connected-new", (userDetails) => {
     // console.log(userDetails)
 
     // userName.push(userDetails["name"])
@@ -69,7 +74,7 @@ io.on("connection", (socket) => {
 
     users[socket.id] = userDetails.name;
 
-    socket.broadcast.emit("oneUserPlus" , {name : userDetails.name , online : countOfOnline})
+    socket.broadcast.emit("oneUserPlus", { name: userDetails.name, online: countOfOnline })
 
     // console.log(users)
   })
@@ -78,7 +83,7 @@ io.on("connection", (socket) => {
 
 
   // console.log(userName)
-  let sendFirst = { online: countOfOnline , topic : newTopic }
+  let sendFirst = { online: countOfOnline, topic: newTopic }
   // // // This will send first ------>
   socket.send(sendFirst)
 
@@ -97,29 +102,51 @@ io.on("connection", (socket) => {
 
   // // // This is for change topic ----->
 
-  socket.on( "topic_send"  , (topicObj)=>{
+  socket.on("topic_send", (topicObj) => {
     // console.log(topicObj.topic)
     newTopic = topicObj.topic
 
-    socket.broadcast.emit("topic_recive" , { topic : newTopic})
+    socket.broadcast.emit("topic_recive", { topic: newTopic })
 
   })
 
 
   // // // This is for typing ----->
 
-  socket.on( "typing_send" , (typingObj)=>{
+  socket.on("typing_send", (typingObj) => {
 
     // console.log(typingObj)
 
     typing = typingObj.user
 
-    if(typingObj.len >= 1){
+    if (typingObj.len >= 1) {
 
-      socket.broadcast.emit("typing_recive" , {user : typing , len : typingObj.len})
+      socket.broadcast.emit("typing_recive", { user: typing, len: typingObj.len })
     }
 
   })
+
+
+  // // // Send File by user ----->
+
+
+  socket.on("upload", (msgType, callback) => {
+    // console.log(msgType); // <Buffer 25 50 44 ...>
+
+    // console.log(JSON.stringify(file))
+    // save the content to the disk, for example
+
+    // console.log(msgType)
+
+
+    socket.broadcast.emit("file_show_to_users", { ...msgType })
+
+  });
+
+
+
+
+
 
 
   // // // This is for dis connect user ----->
@@ -127,7 +154,7 @@ io.on("connection", (socket) => {
     countOfOnline--
     console.log('user disconnected');
 
-    socket.broadcast.emit("oneUserMinus" , { online : countOfOnline})
+    socket.broadcast.emit("oneUserMinus", { online: countOfOnline })
 
   });
 })
