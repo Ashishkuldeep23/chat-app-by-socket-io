@@ -148,6 +148,15 @@ bodyDiv.addEventListener("keyup", (e) => {
 
 
 
+// // // Some global variables that used in audio ------->
+
+// // // Send sound (new instance of audio objcet) ---->
+let sendAudio = new Audio("./sounds/send.mp3")
+// // // Recive sound (new instance of audio objcet) ---->c
+let reciveAudio = new Audio("./sounds/recive.mp3")
+
+
+
 
 // // // This is actual  function to send msg -->
 
@@ -234,9 +243,6 @@ function sendMessage(msg) {
 
     // console.log(msgObj)
 
-    // // // Send sound (new instance of audio objcet) ---->
-    let sendAudio = new Audio("./sounds/send.mp3")
-
 
     if (msgObj.message === "😊" || msgObj.message === "👍" || msgObj.message === "👌" || msgObj.message === "🤣" || msgObj.message === "❤️" || msgObj.message === "🎉" || msgObj.message === "🥲") {
 
@@ -293,6 +299,7 @@ function uploadFiles(e) {
         // appentMsg({ src: reader.result, user: msgObj.userName }, "in", "animate__animated  animate__zoomInUp", "3rem", true)
         appentMsg({ src: reader.result, user: userName }, "out", "animate__animated  animate__zoomInUp", "3rem", true)
         scollToBottom()
+        sendAudio.play()
 
     }
 
@@ -331,7 +338,7 @@ function sendFileToServer(file) {
 
 // appentMsg(msgObj, "in", "animate__animated  animate__zoomInUp", "3rem")
 
-function appentMsg(msgObj, type, className = "img_style_file animate__animated  animate__zoomInUp ", fontSize = "3rem", fileType = false) {
+function appentMsg(msgObj, type, className = "img_style_file animate__animated  animate__zoomInUp ", fontSize, fileType = false) {
 
     let mainDiv = document.createElement("div")
 
@@ -443,8 +450,6 @@ socket.on('message', (msgObj) => {
         // // // set online count --->
         document.querySelector("#online").innerHTML = `<h3 class="text-warning">${msgObj.online} Online</h3>`
 
-        // // // Recive sound (new instance of audio objcet) ---->c
-        let reciveAudio = new Audio("./sounds/recive.mp3")
 
         if (msgObj.message === "😊" || msgObj.message === "👍" || msgObj.message === "👌" || msgObj.message === "🤣" || msgObj.message === "❤️" || msgObj.message === "🎉" || msgObj.message === "🥲") {
 
@@ -596,6 +601,8 @@ socket.on("file_show_to_users", (msgObj) => {
 
     reader.onloadend = () => {
         appentMsg({ src: reader.result, user: msgObj.userName }, "in", "animate__animated  animate__zoomInUp", "3rem", true)
+
+        reciveAudio.play()
         scollToBottom()
     }
 
@@ -606,6 +613,7 @@ socket.on("file_show_to_users", (msgObj) => {
 
 
 
+// // // Some js fn's i used in my code ---------->
 
 // // screen scroll  ----------->
 function scollToBottom() {
