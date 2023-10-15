@@ -43,7 +43,13 @@ const fs = require('fs');
 
 /// // // Socket IO code --------->>
 
-const io = require("socket.io")(server)
+const io = require("socket.io")(server, {
+  rejectUnauthorized: false , // WARN: please do not do this in production
+  reconnectionDelayMax: 10000,
+  maxHttpBufferSize: 2 * 1e8
+
+})
+
 
 let countOfOnline = 0
 
@@ -118,9 +124,7 @@ io.on("connection", (socket) => {
     // console.log(typingObj)
 
     typing = typingObj.user
-
     if (typingObj.len >= 1) {
-
       socket.broadcast.emit("typing_recive", { user: typing, len: typingObj.len })
     }
 
@@ -130,33 +134,43 @@ io.on("connection", (socket) => {
   // // // Send File by user ----->
 
 
-  socket.on("upload", (msgType, callback) => {
-    // console.log(msgType); // <Buffer 25 50 44 ...>
+  socket.on("upload", (msgObj, callback) => {
+
+    console.log(msgObj); // <Buffer 25 50 44 ...>
 
     // console.log(JSON.stringify(file))
+
     // save the content to the disk, for example
+    // callback({ message: err ? "failure" : "success" });
+    // console.log( typeof msgType.body )
+    // console.log( Object.keys( msgObj ).length )
 
-    // console.log(msgType)
+    // // // If upload msg send true to FE by callback fn , that how we can sent callback msg to FE of user.
 
+    if( msgObj && Object.keys( msgObj ).length > 0){
+      callback(true)
+    }else{
+      callback(false)
+    }
 
-    socket.broadcast.emit("file_show_to_users", { ...msgType })
+    socket.broadcast.emit("file_show_to_users", msgObj)
 
   });
-
-
-
 
 
 
 
   // // // This is for dis connect user ----->
-  socket.on('disconnect', () => {
+  socket.on('disconnect', (reason) => {
+
+    console.log(reason)
+
     countOfOnline--
     console.log('user disconnected');
-
     socket.broadcast.emit("oneUserMinus", { online: countOfOnline })
 
   });
+
 })
 
 

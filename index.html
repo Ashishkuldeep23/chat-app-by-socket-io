@@ -40,9 +40,7 @@
             </p>
 
 
-
             <!-- Menu div -->
-
             <div class="animate__animated animate__fadeInRight" id="menu">
 
                 <div class="border border-3  border-danger">
@@ -98,6 +96,8 @@
                                     encrypted</strong> like big <strong>MNC's </strong>saying something and serving
                                 something😂 (Means your messages will be <strong>visible to all online person</strong>).
                             </li>
+                            <li>Now user can <strong>send pictures to all online persons</strong> ,<strong> size limit</strong> is present so if you see your picture is sended then it is <strong>successfully sended </strong> to all online persons. Use carefuly.</li>
+                            <li>User can <strong>set brightness </strong>of UI by clicking on Plus or Minus button on <strong>Top left cornor.</strong> Use this feature when you feeling to brightness and also use DARK mode instractions given above.</li>
                             <li>Share with your <strong>friends</strong></li>
                             <li>Thank you for <strong>reading</strong>.</li>
                         </ul>
@@ -142,8 +142,25 @@
             </div>
 
 
+            <!-- Going to create bightness of the ui -->
+            <div class="position-absolute top-0 start-0 ms-1">
 
-            <!-- MMain Ui div -->
+                <nav aria-label="Page navigation example  ">
+                    <p class=" d-none d-lg-block text-white text-center bg-warning rounded-top bg-dark border border-warning" style="position: relative; top: 2px;">- Bightness +</p>
+
+                    <ul class="pagination">
+                      <li class="page-item" onclick="decreaseBright()"><a class="page-link bg-dark border-warning text-white fw-bold py-0" href="#">-</a></li>
+                      <li class="page-item "><a class="page-link bg-warning text-dark fw-bold h5 py-0" href="#" id="numberOfBright">5</a></li>
+                      <li class="page-item" onclick="increaseBright()"><a class="page-link bg-dark border-warning text-white fw-bold py-0" href="#">+</a></li>
+                    </ul>
+
+                    <!-- <p class="text-white text-center bg-warning rounded-top bg-dark border border-warning" style="position: relative; top: 2px;">- Bightness +</p> -->
+                  </nav>
+
+            </div>
+
+
+            <!-- Main Ui div -->
             <div class="inner_div">
 
                 <div class="logo_div">
@@ -189,10 +206,10 @@
 
                     <!-- Send File div -->
                     <div class="d-inline-flex " id="camara_icon_uplaod">
+                        <input class="d-none" accept="image/png, image/gif, image/jpeg" id="fileInput"  type="file" onchange="uploadFiles(event)" >
                         <label for="fileInput">
                             <i class="fa-solid fa-camera-retro fa-shake" id="camara_icon"></i>
                         </label>
-                        <input class="d-none" accept="image/*" onchange="uploadFiles(event)" id="fileInput" type="file">
 
                     </div>
 
@@ -219,7 +236,7 @@
                             <label for="fileInput">
                                 <i class="fa-solid fa-camera-retro fa-shake" id="camara_icon"></i>
                             </label>
-                            <input class="d-none" accept="image/*" onchange="uploadFiles(event)" id="fileInput" type="file">
+                            <input class="d-none" accept="image/png, image/gif, image/jpeg" (change)="uploadFiles($event)"  id="fileInput" type="file"  capture  >
 
                         </div>
 

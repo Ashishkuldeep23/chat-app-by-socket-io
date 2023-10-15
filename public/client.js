@@ -15,6 +15,57 @@ if (getDrakMode) {
     document.getElementsByTagName("BODY")[0].style.backgroundColor = "#212529";
 }
 
+// // // Setting brightness of UI by js ---->
+let bodyElement = document.querySelector("body")
+let currentBright = 5;   // // 5 is max and 1 in min.
+
+
+
+function changeUIofBright() {
+
+    bodyElement.style.filter = `brightness(${currentBright * 20}%)`
+    document.getElementById("numberOfBright").innerHTML = `${(currentBright > 5) ? "5" : (currentBright < 1) ? 1 : currentBright}`
+
+    // // // Set brightness value in local stroage -->
+    localStorage.setItem("brightnessOfChat", JSON.stringify(currentBright))
+}
+
+
+
+
+function increaseBright() {
+
+    if (currentBright < 5) {
+        currentBright++
+        changeUIofBright()
+    }
+}
+
+function decreaseBright() {
+
+    if (currentBright > 1) {
+        currentBright--
+        changeUIofBright()
+    }
+}
+
+
+// // // read brightness value in localstorage --->
+
+let brightnessInLocal = localStorage.getItem("brightnessOfChat")
+if (brightnessInLocal) {
+    let value = JSON.parse(brightnessInLocal)
+    // changeUIofBright(value)
+
+    currentBright = value   // // // set value of currentBrightness.
+
+    // // // if getting value of brightness in loaclhost --->
+    bodyElement.style.filter = `brightness(${value * 20}%)`
+    document.getElementById("numberOfBright").innerHTML = `${(value > 5) ? "5" : (value < 1) ? 1 : value}`
+}
+
+
+
 
 
 // // // Ask name of user ---->
@@ -277,45 +328,47 @@ function sendMessage(msg) {
 
 // // // // Camara icon click handler ------->
 
+
+
+
 // // Upload file --->
 function uploadFiles(e) {
 
-    // let inputTag = document.getElementById("fileInput")
-    // console.log(inputTag)
+
 
     // console.log(e)
 
-    let inputFileIs = e.target.files[0]
-    // console.log(inputFileIs)
+    e.preventDefault()
 
+    // console.log(e)
 
-    // // // Append sended msg --->
-    let blod = new Blob([inputFileIs], { type: inputFileIs.type })
-
-    let reader = new FileReader();
-    reader.readAsDataURL(blod)
-
-    reader.onloadend = () => {
-        // appentMsg({ src: reader.result, user: msgObj.userName }, "in", "animate__animated  animate__zoomInUp", "3rem", true)
-        appentMsg({ src: reader.result, user: userName }, "out", "animate__animated  animate__zoomInUp", "3rem", true)
-        scollToBottom()
-        sendAudio.play()
-
-    }
-
-    // // // Don't give image directly convert it into reader file.
-    // appentMsg({ src: inputFileIs, user: userName }, "out", "animate__animated  animate__zoomInUp", "3rem", true)
+    let FirstFile = e.target.files[0]
 
 
     // // // Actual send fn
-    sendFileToServer(inputFileIs)
+    sendFileToServer(FirstFile)
+
+    // // Not using below code becoz , previously error in maxMMsgObject.
+    // let widthOfWindow = window.innerWidth;
+    // if (widthOfWindow < 720) {
+    //     alert("mobile")
+    //     setTimeout(() => {
+    //         sendFileToServer(FirstFile)
+
+    //     }, 2000)
+    // } else {
+    //     alert("Computer")
+    //     sendFileToServer(FirstFile)
+    // }
+
+
 }
 
 
 // // Send file --->
 function sendFileToServer(file) {
 
-    console.log("File sended ...");
+    // console.log("File sended ...");
 
 
     let msgObject = {
@@ -330,10 +383,32 @@ function sendFileToServer(file) {
 
     socket.emit("upload", msgObject, (status) => {
         console.log(status);
+
+        // // // If emit msg return true then only show msg is sended with file or just leave as it is. 
+
+        if (status) {
+            let inputFileIs = file;
+            // // // Append sended msg --->
+            let blod = new Blob([inputFileIs], { type: inputFileIs.type })
+            let reader = new FileReader();
+            reader.readAsDataURL(blod)
+
+            reader.onloadend = () => {
+                // appentMsg({ src: reader.result, user: msgObj.userName }, "in", "animate__animated  animate__zoomInUp", "3rem", true)
+                appentMsg({ src: reader.result, user: userName }, "out", "animate__animated  animate__zoomInUp", "3rem", true)
+                scollToBottom()
+                sendAudio.play()
+
+            }
+
+            // // // Don't give image directly convert it into reader file.
+            // appentMsg({ src: inputFileIs, user: userName }, "out", "animate__animated  animate__zoomInUp", "3rem", true)
+        }
+
     });
 
+    // // / Previously showing on every file send to sended users.
 }
-
 
 
 // appentMsg(msgObj, "in", "animate__animated  animate__zoomInUp", "3rem")
