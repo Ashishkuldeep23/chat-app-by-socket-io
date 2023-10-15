@@ -46,7 +46,8 @@ const fs = require('fs');
 const io = require("socket.io")(server, {
   rejectUnauthorized: false , // WARN: please do not do this in production
   reconnectionDelayMax: 10000,
-  maxHttpBufferSize: 2 * 1e8
+  maxHttpBufferSize: 2 * 1e8 ,
+  connectTimeout : 80000,
 
 })
 
